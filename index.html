@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport">
+  <title>ダンカグのシミュレータ</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="dictionary.js"></script>
+  <script src="mtmdata.js"></script>
+  <script src="getdata.js"></script>
+  <script src="somefunc.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+</head>
+<body>
+  <header>
+	<h2 class="headline">
+      <span>ダンカグのシミュレータ</span>
+    </h2>
+	<ul class="nav-list">
+      <li class="nav-list-item">Home</li>
+      <li class="nav-list-item">tag1</li>
+      <li class="nav-list-item">tag2</li>
+    </ul>
+  </header>
+  
+  <form name="dataForm">
+	<!--<button type="button" onclick="getMtmData()">getMtmData()</button>
+	<button type="button" onclick="getHrnData()">getHrnData()</button>
+	<button type="button" onclick="getOtherData()">getOtherData()</button>
+	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
+	
+	<h3>曲選択</h3>
+		<p>
+			<select name="music" id="ms" required>
+				<option value="0">楽曲を選択</option>
+				<option value="fof">フォールオブフォール</option>
+			</select>
+			難易度 
+			<select name="diff" id="diff" required>
+				<option value="0">Easy</option>
+				<option value="1">Normal</option>
+				<option value="2">Hard</option>
+				<option value="3">Extra</option>
+				<option value="4" selected>Lunatic</option>
+			</select>
+		</p>
+	<h4>諸データ</h4>
+		<p>
+			開花レベルボーナス <select name="bloom" id="bn1" required></select>
+		</p>
+		<!--<p>
+			楽曲属性 <select name="music_attr" id="bn2">
+				<option value="0">Em</option>
+				<option value="1">Co</option>
+				<option value="2">Ro</option>
+				<option value="3" selected>All</option>
+			</select>
+		</p>-->
+	<h4>ヒロイン編成</h4>
+		<p>
+			ヒロイン1: 
+			Lv.<select name="hr1lv" id="lv1" required></select>
+			Em補正 <select name="hr1em" id="st1" required></select>
+			Co補正 <select name="hr1co" id="st2" required></select>
+			Ro補正 <select name="hr1ro" id="st3" required></select>
+			Skill <select name="hr1sk" id="sk1" required></select>
+		</p>
+		<p>
+			ヒロイン2: 
+			Lv.<select name="hr2lv" id="lv2" required></select>
+			Em補正 <select name="hr2em" id="st4" required></select>
+			Co補正 <select name="hr2co" id="st5" required></select>
+			Ro補正 <select name="hr2ro" id="st6" required></select>
+			Skill <select name="hr2sk" id="sk2" required></select>
+		</p>
+	<h4>チーム編成 </h4>
+	<div id="mtm">
+    <p>
+	  1人目:<select name="mitama1" id="m1" size="1" required><option value="0">御霊カードを選択</option></select>
+	  レベル <select name="level1" id="l1" size="1"></select>
+	  深化レベル <select name="sinka1" id="s1" size="1"></select><br>
+	  2人目:<select name="mitama2" id="m2" size="1" required><option value="0">御霊カードを選択</option></select>
+	  レベル <select name="level2" id="l2" size="1"></select>
+	  深化レベル <select name="sinka2" id="s2" size="1"></select><br>
+	  3人目:<select name="mitama3" id="m3" size="1" required><option value="0">御霊カードを選択</option></select>
+	  レベル <select name="level3" id="l3" size="1"></select>
+	  深化レベル <select name="sinka3" id="s3" size="1"></select><br>
+	  4人目:<select name="mitama4" id="m4" size="1" required><option value="0">御霊カードを選択</option></select>
+	  レベル <select name="level4" id="l4" size="1"></select>
+	  深化レベル <select name="sinka4" id="s4" size="1"></select><br>
+	  5人目:<select name="mitama5" id="m5" size="1" required><option value="0">御霊カードを選択</option></select>
+	  レベル <select name="level5" id="l5" size="1"></select>
+	  深化レベル <select name="sinka5" id="s5" size="1"></select><br>
+	</p>
+	</div>
+	<button type="button" onclick="calcForce()">戦力計算</button>
+	<p>
+	<table id="force_tbl">
+		<tr> <td class="style-a">A1: ミタマ戦力</td> <td class="text-right">0</td> </tr>
+		<tr> <td class="style-a">A2: 開花レベルボーナス</td> <td class="text-right">0</td> </tr>
+		<tr> <td class="style-b">B: スキル効果予想値</td> <td class="text-right">0</td> </tr>
+		<tr> <td class="style-c">C: 属性一致ボーナス</td> <td class="text-right">0</td> </tr>
+		<tr> <td class="style-d">D: ヒロイン補正値</td> <td class="text-right">0</td> </tr>
+		<tr> <th>総戦力</th> <td name="total_force" class="text-right">0</td> </tr>
+	</table>
+	</p>
+	<h3>スコアシミュレーター</h3>
+	<div id="score1">
+		<p>
+			総戦力 <input type="text" id="tb1" value="5000" maxlength="7"><br>
+			シミュレーション回数 <select name="simunum" id="sm1">
+				<option value="1">1</option>
+				<option value="10">10</option>
+				<option value="100">100</option>
+				<option value="1000" selected>1000</option>
+				<option value="10000">10000</option>
+			</select>
+			<button type="button" onclick="calcScore()">推定スコア算出</button>
+		</p>
+		<p id="text1">ミタマバースト発動タイミング ： </p>
+	</div>
+	<div id="score2">
+		<p id="text2_max"></p>
+		<p id="text2_min"></p>
+		<p id="text2_mean"></p>
+	</div>
+	<div id="stage"></div><!-- plotly.jsのキャンバス -->
+  </form>
+  <footer>
+    <div class="container">
+      <p>Learn to Code, Learn to be Creative.</p>
+      <p>(c) 2021 yukinami</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<script>
+
+const input = document.getElementById('file');
+let reader = new FileReader();
+const ms_list = document.getElementById('ms');
+
+//window.addEventListener('load',getMtmData,false);
+window.addEventListener('load',() => {
+	console.log("b");
+	getMtmData();
+	getHrnData();
+	getOtherData();
+});
+/*
+input.addEventListener('change', () => {
+    alert('ファイルを読み込みました！');
+	for(file of input.files) {
+	  console.log(file);
+	  //Fileオブジェクト（テキストファイル）のファイル内容を読み込む
+	  reader.readAsText(file, 'UTF-8');
+	  //ファイルの読み込み完了後に内容をコンソールに出力する
+	  reader.onload = ()=> {
+	    console.log(reader.result);
+	  }
+	}
+	
+});*/
+ms_list.addEventListener('click', () => {
+    //alert('event');
+    console.log('event');
+    console.log(ms_list.value);
+	getScoreData(ms_list.value);
+	
+});
+
+function calcForce()
+{
+	if(ms_list.value=="0"){alert("曲を選択して下さい"); return;}
+	
+	console.log("calcForce");
+	let a1=0,a2=0,b=0,c=0,d=0;
+	let formElms = document.forms.dataForm;
+	
+	let heroine = new Array(3);
+	heroine[0] = parseInt(formElms.hr1em.value) + parseInt(formElms.hr2em.value);
+	heroine[1] = parseInt(formElms.hr1co.value) + parseInt(formElms.hr2co.value);
+	heroine[2] = parseInt(formElms.hr1ro.value) + parseInt(formElms.hr2ro.value);
+	console.log(heroine);
+	
+	let hrn_skill1 = parseInt(formElms.hr1sk.value);
+	let hrn_skill2 = parseInt(formElms.hr2sk.value);
+	//let msc_attr = parseInt(formElms.music_attr.value);
+	let msc_attr = getAttr();
+	
+	let mitamas = new Array(5);
+	let hrs_bonus = new Array(5);
+	let mtm_attr = new Array(5);
+	for(let y=0;y<5;y++)
+	{
+		mitamas[y] = new Array(3);
+		let member_name = "mitama"+(y+1);
+		let member_sinka = "sinka"+(y+1);
+		let member_level = "level"+(y+1);
+		let member = mtmdata[formElms[member_name].value];
+		let mem_s = parseInt(formElms[member_sinka].value);
+		let mem_l = parseInt(formElms[member_level].value);
+		
+		let stt = calcStatus(member.status.max_st, member.status.min_st, member.rare,mem_l,mem_s);
+		for(let x=0;x<3;x++)
+		{
+			mitamas[y][x] = Math.floor(stt[x]);
+		}
+		//ヒロインスキルによるボーナスを計算
+		hrs_bonus[y] = new Array(3).fill(0);
+		switch(hrn_skill1){
+			case 0: hrs_bonus[y][0] += ((member.attr=="em")?(5):(0)); break;
+			case 1: hrs_bonus[y][1] += ((member.attr=="co")?(5):(0)); break;
+			case 2: hrs_bonus[y][2] += ((member.attr=="ro")?(5):(0)); break;
+			default:
+		}
+		switch(hrn_skill2){
+			case 0: hrs_bonus[y][0] += ((member.attr=="em")?(5):(0)); break;
+			case 1: hrs_bonus[y][1] += ((member.attr=="co")?(5):(0)); break;
+			case 2: hrs_bonus[y][2] += ((member.attr=="ro")?(5):(0)); break;
+			default:
+		}
+		//属性うめ
+		switch(member.attr){
+			case "em": mtm_attr[y]=0; break;
+			case "co": mtm_attr[y]=1; break;
+			case "ro": mtm_attr[y]=2; break;
+			default:
+		}
+		
+	}
+	console.log(mitamas);
+	let bloom_level = parseInt(formElms.bloom.value);
+	//a1,a2の計算
+	
+	for(let y=0;y<5;y++){
+		let a=0;
+		for(let x=0;x<3;x++){
+			a += mitamas[y][x];
+		}
+		a1+=a;
+		a2+=Math.floor(a*(bloom_level/10000))
+	}
+	
+	//ヒロイン補正込み値を計算
+	let forces = new Array(5);
+	for(let y=0;y<5;y++){
+		forces[y] = new Array(3);
+		for(let x=0;x<3;x++){
+			forces[y][x] =(mitamas[y][x]*(1+bloom_level/10000)*(1+heroine[x]/100)*(1+hrs_bonus[y][x]/100));
+			forces[y][x] = (Math.floor(forces[y][x]*100)/100);//小数第３位以下切り捨て
+			
+		}
+		d += Math.floor(forces[y][0]+forces[y][1]+forces[y][2]); 
+	}
+	d = d -a1-a2;
+	
+	//属性一致ボーナスの計算
+	if(msc_attr==3){//All
+		for(let y=0;y<5;y++){
+			for(let x=0;x<3;x++){
+				forces[y][x]*=1.5;
+			}
+		}
+	}
+	else
+	{
+		for(let y=0;y<5;y++){
+			if(mtm_attr[y]==msc_attr){
+				forces[y][msc_attr]*=2;
+			}
+		}
+	}
+	console.log(forces);
+	for(let y=0;y<5;y++){
+		c += Math.floor(forces[y][0]+forces[y][1]+forces[y][2]);
+	}
+	c = c -a1-a2-d;
+	
+	
+	//旧スコア計算方法
+	/*
+	
+	//a1,a2の計算
+	for(let x=0;x<3;x++){
+		a1+=(mitamas[0][x]+mitamas[1][x]+mitamas[2][x]+mitamas[3][x]+mitamas[4][x]);
+	}
+	a2 = a1 * (bloom_level/10000);
+	
+	
+	//cの計算
+	if(msc_attr==3){//All
+		for(let y=0;y<5;y++){
+			for(let x=0;x<3;x++){
+				c+=(mitamas[y][x]*(1+heroine[x]/100)*(1+hrs_bonus[y][x]/100));
+			}
+		}
+		c = c *(1+bloom_level/10000)
+		c = c *0.5;
+	}
+	else
+	{
+		for(let y=0;y<5;y++){
+			if(mtm_attr[y]==msc_attr){
+				c+=(mitamas[y][msc_attr]*(1+bloom_level/10000)*(1+heroine[msc_attr]/100)*(1+hrs_bonus[y][msc_attr]/100));
+			}
+			console.log(mitamas[y][msc_attr],bloom_level,heroine[msc_attr],hrs_bonus[y][msc_attr]);
+		}
+	}
+	//dの計算
+	for(let y=0;y<5;y++){
+		for(let x=0;x<3;x++){
+			d+=(mitamas[y][x]*(1+bloom_level/10000)*(1+heroine[x]/100)*(1+hrs_bonus[y][x]/100));
+		}
+	}
+	d = d -(a1*(1+bloom_level/10000))+1;
+	
+	*/
+	
+	console.log(a1,a2,b,c,d);
+	updateTable(a1,a2,b,c,d);
+	setForce(a1+a2+c+d);
+}
+
+function calcScore()
+{
+	//setAttr();//曲の属性を設定
+	//calcForce();//一応先に戦力を再計算
+	if(ms_list.value=="0"){alert("曲を選択して下さい"); return;}
+	
+	let formElms = document.forms.dataForm;
+	let force = document.getElementById("tb1").value;
+	let diff_index = Math.floor(formElms.diff.value);
+	let diff_num = musicdata.difficulty[diff_index];
+	let notes_num = musicdata.notes[diff_index];
+	let notes = scoredata[diff_index];
+	
+	//楽譜データからノーツと時間を取り出す
+	let bar_time = 240000/(musicdata.BPM);
+	let notes_arr = new Array();
+	for(let i=0;i<notes_num;i++)
+	{
+		//console.log(notes[i]);
+		let obj = {type:"n",combo:0,time:0};
+		
+		obj.type = "n";
+		obj.combo = notes[i].id;
+		obj.time = ((musicdata.offset)+((notes[i].bar-1)*bar_time)+((notes[i].tick*bar_time)/1920));
+		notes_arr[i] = obj;
+	}
+	console.log(notes_arr)
+	
+	//ついでにミタマバースト発動の最適タイミングも出す
+	
+	let burst_time = 8000;
+	console.log(diff_num,force,notes_num);
+	let basic_score = (0.334*diff_num+10.806)*force/notes_num;
+	//let basic_score_f = (0.334*diff_num+10.807)*force/notes_num;
+	console.log(basic_score);
+	//console.log(basic_score_f);
+	
+	let max_i=-1;
+	let max_burst_score=0;
+	let max_burst_time=0;
+	
+	let leader = mtmdata[formElms["mitama1"].value];
+	let m_b_info = 	(leader.rare=="ssr")?(leader.status.burst2):
+					(leader.rare=="sr")?(leader.status.burst1):null;
+	
+	let leader_sinka_level = parseInt(formElms["sinka1"].value);
+	let m_b_level;
+	
+	if(leader_sinka_level<4)m_b_level = 1;
+	else if(leader_sinka_level<8)m_b_level = 2;
+	else m_b_level = 3;
+	
+	
+	if(m_b_info.cat=="score"){
+	
+		burst_time = m_b_info.num[m_b_level-1][0]*1000;
+		
+		for(let i=0;i<notes_num;i++)
+		{
+			let start_time = notes_arr[i].time;
+			let end_time = start_time + burst_time;
+			let burst_score = 0;
+			let j=i;
+			while(j<notes_num&&notes_arr[j].time<end_time)
+			{
+				let note_score = basic_score;
+				if(1<=notes_arr[j].combo&&notes_arr[j].combo<=50)note_score*=1.00;
+				else if(51<=notes_arr[j].combo&&notes_arr[j].combo<=100)note_score*=1.01;
+				else note_score*=((100+(Math.floor((notes_arr[j].combo+99)/100)))/100);
+				
+				burst_score+=Math.floor(note_score);
+				j++;
+			}
+			//console.log(i,burst_score);
+			if(burst_score>max_burst_score){
+				max_burst_score = burst_score;
+				max_burst_time = notes_arr[i].time;
+				max_i=i;
+			}
+		}
+		console.log(max_i+"コンボ目に撃ったらいいよ！");
+		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+max_i+"コンボ目に撃ったらいいよ！";
+	}
+	else {
+		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： ミタマバーストがスコアアップ系じゃないよ！";
+	}
+
+	
+	//スコア推定
+	//let events_arr = notes_arr;
+	
+	//let formElms = document.forms.dataForm;
+	let mitama_members = new Array(5);
+	let mitama_eff_lvl = new Array(5);
+	
+	for(let y=0;y<5;y++)
+	{
+		let member_name = "mitama"+(y+1);
+		let member_sinka = "sinka"+(y+1);
+		let member_level = "level"+(y+1);
+		mitama_members[y] = mtmdata[formElms[member_name].value];
+		let mem_s = parseInt(formElms[member_sinka].value);
+		
+		if(mem_s<2)mitama_eff_lvl[y] = 1;
+		else if(mem_s<4)mitama_eff_lvl[y] = 2;
+		else mitama_eff_lvl[y] = 3;
+	}
+	//console.log(mitama_eff_lvl);
+	
+	let last_time = notes_arr[notes_num-1].time;
+	//n回繰り返す
+	let total_score_arr = [];
+	let n = formElms.simunum.value;
+	for(let i=0;i<n;i++)
+	{
+		//まずスコアボーナスを生成する
+		let scoreup_events_arr = new Array();
+		let s_e_arr_length = 0;
+		//スコアアップキャラの数だけイベントを生成
+		let obj = {type:"e",num:0,time:0};
+		for(let j=0;j<5;j++)
+		{
+			if(mitama_members[j].status.effect.cat=="score")
+			{
+				let mtm_eff = mitama_members[j].status.effect.num[mitama_eff_lvl[j]-1];
+				let c_time = mtm_eff[0]*1000; //クールタイム
+				let e_prob = mtm_eff[1]; //確率
+				let e_time = mtm_eff[2]*1000; //発動時間
+				let e_num =  mtm_eff[3]; //上昇度合
+				//c_time,prob,e_time,e_num
+				
+				//属性一致の際は確率が1.5倍？説
+				if(mitama_members[j].attr==musicdata.attribute)e_prob*=1.5;
+				
+				let time_ms = c_time;
+				while(time_ms<=last_time+1000)
+				{
+					if(random_judge(e_prob))
+					{
+						let obj1 = {type:"e", num:e_num, time:time_ms};
+						scoreup_events_arr[s_e_arr_length] = obj1;
+						s_e_arr_length++;
+						time_ms+=e_time;
+						
+						let obj2 = {type:"e", num:(-(e_num)), time:time_ms};
+						scoreup_events_arr[s_e_arr_length] = obj2;
+						s_e_arr_length++;
+					}
+					time_ms+=c_time;//成功しても失敗してもcool_timeが加算される
+					//let obj = {type:"e",num:e_num}
+				}
+			}
+		}
+		
+		//ミタマバーストも入れる
+		
+		if(m_b_info.cat=="score")
+		{
+			let m_b_num = m_b_info.num[m_b_level-1][1];
+			
+			let obj3 = {type:"e", num:m_b_num, time:max_burst_time};
+			scoreup_events_arr[s_e_arr_length] = obj3;
+			s_e_arr_length++;
+			
+			let obj4 = {type:"e", num:(-(m_b_num)), time:(max_burst_time+burst_time)};
+			scoreup_events_arr[s_e_arr_length] = obj4;
+			s_e_arr_length++;
+		}
+		
+		
+		//統合し、ソート
+		//console.log(notes_arr);
+		//console.log(scoreup_events_arr);
+		let events_arr = notes_arr.concat(scoreup_events_arr);
+		//console.log(events_arr);
+		
+		events_arr.sort(function(a,b){
+			return (a.time - b.time);
+		});
+		//console.log(events_arr);
+		
+		
+		//スコア計算
+		let total_score = 0;
+		let skill_mag = 0;
+		for(let x of events_arr)
+		{
+			if(x.type=="n")
+			{
+				let note_score = basic_score*((100+skill_mag)/100);
+				
+				if(1<=x.combo&&x.combo<=50)note_score*=1.00;
+				else if(51<=x.combo&&x.combo<=100)note_score*=1.01;
+				else note_score*=((100+(Math.floor((x.combo+99)/100)))/100);
+				
+				if(i==0)console.log(Math.round(note_score));
+				total_score+=Math.round(note_score);//おそらく四捨五入
+			}
+			else if(x.type=="e")
+			{
+				skill_mag+=x.num;
+			}
+		}
+		//console.log(total_score);
+		total_score_arr[i] = total_score;
+	}
+	//描画と計算
+	let max_total_score = 0;
+	let min_total_score = 100000000;
+	let mean_total_score = 0;
+	for(let i in total_score_arr)
+	{
+		if(max_total_score<total_score_arr[i])max_total_score=total_score_arr[i];
+		if(min_total_score>total_score_arr[i])min_total_score=total_score_arr[i];
+		mean_total_score+=total_score_arr[i];
+	}
+	mean_total_score/=(total_score_arr.length);
+	document.getElementById("text2_max").innerText = "最大スコア : "+max_total_score;
+	document.getElementById("text2_min").innerText = "最小スコア : "+min_total_score;
+	document.getElementById("text2_mean").innerText = "平均スコア : "+mean_total_score;
+	
+	let bin_size = 10000;
+	let color_name = ["red","cyan","gold","gray"];
+	
+	let trace = {
+		x: total_score_arr,
+		type : "histogram",
+		histnorm : "",
+		marker : {
+			color : color_name[getAttr()], 
+		},
+		xbins:{
+			size:bin_size,
+			end:Math.ceil(max_total_score/bin_size)*bin_size,
+			start:Math.floor(min_total_score/bin_size)*bin_size
+		}
+	};
+	let data = [trace];
+	let layout = {
+		height : 480,
+		width : 640,
+		bargroupgap: 0.05,
+		xaxis: {title: "Score"}, 
+		yaxis: {title: "Count"}
+	};
+	Plotly.newPlot("stage",data,layout);
+	
+}
+</script>

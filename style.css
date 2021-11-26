@@ -1,0 +1,47 @@
+header {
+  height: 50px;
+  width: 100%;
+  padding: 5px 0;
+  color: #fff;
+  background-image: linear-gradient(to right, #fa709a 0%, #9e40f1 100%);
+}
+header .headline{
+    line-height: 30px;
+    font-size: 30px;
+	border-left: 5px solid #000;
+}
+.nav-list {
+  text-align: center;
+  color: #fff;
+}
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+table {
+  border-collapse: collapse;
+  border: solid 1px #111;
+  width: 300px;
+  max-width: 100%
+}
+th, td {
+  border: solid 1px #333; /* 線の種類 太さ 色 */
+}
+.style-a {
+  background-color: #78f;
+}
+.style-b {
+  background-color: #6f8;
+}
+.style-c {
+  background-color: #ff8;
+}
+.style-d {
+  background-color: #f66;
+}
+.text-right {
+  text-align: right;
+  width: 80px;
+}
