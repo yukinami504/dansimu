@@ -172,10 +172,18 @@ ms_list.addEventListener('click', () => {
 	
 });
 
-function calcForce()
+function calcForce(flag)
 {
 	if(ms_list.value=="0"){alert("曲を選択して下さい"); return;}
-	else getScoreData(ms_list.value);
+	else {
+		getScoreData(ms_list.value);
+		if(flag==1) {
+			flag = 0;
+			setTimeout(function() {
+				calcForce(flag);
+			},100);
+		}
+	}
 	
 	console.log("calcForce");
 	let a1=0,a2=0,b=0,c=0,d=0;
