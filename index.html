@@ -175,6 +175,7 @@ ms_list.addEventListener('click', () => {
 function calcForce()
 {
 	if(ms_list.value=="0"){alert("曲を選択して下さい"); return;}
+	else getScoreData(ms_list.value);
 	
 	console.log("calcForce");
 	let a1=0,a2=0,b=0,c=0,d=0;
