@@ -35,7 +35,7 @@
 		<p>
 			<select name="music" id="ms" required>
 				<option value="0">楽曲を選択</option>
-				<option value="fof">フォールオブフォール</option>
+				<!--<option value="fof">フォールオブフォール</option>-->
 			</select>
 			難易度 
 			<select name="diff" id="diff" required>
@@ -149,6 +149,7 @@ window.addEventListener('load',() => {
 	getMtmData();
 	getHrnData();
 	getOtherData();
+	getMusicData();
 });
 /*
 input.addEventListener('change', () => {
@@ -175,15 +176,8 @@ ms_list.addEventListener('click', () => {
 function calcForce(flag)
 {
 	if(ms_list.value=="0"){alert("曲を選択して下さい"); return;}
-	else {
-		getScoreData(ms_list.value);
-		if(flag==1) {
-			flag = 0;
-			setTimeout(function() {
-				calcForce(flag);
-			},100);
-		}
-	}
+	else getScoreData(ms_list.value);
+	
 	
 	console.log("calcForce");
 	let a1=0,a2=0,b=0,c=0,d=0;
@@ -198,7 +192,8 @@ function calcForce(flag)
 	let hrn_skill1 = parseInt(formElms.hr1sk.value);
 	let hrn_skill2 = parseInt(formElms.hr2sk.value);
 	//let msc_attr = parseInt(formElms.music_attr.value);
-	let msc_attr = getAttr();
+	console.log(music_name[ms_list.options[ms_list.selectedIndex].text].attr);
+	let msc_attr = getAttr(music_name[ms_list.options[ms_list.selectedIndex].text].attr);
 	
 	let mitamas = new Array(5);
 	let hrs_bonus = new Array(5);

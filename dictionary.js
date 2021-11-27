@@ -56,3 +56,7 @@ const chara_name = {
 	"クラウンピース" : {"id" : 53, "name" : "クラピ"},
 	"犬走椛" : {"id" : 54, "name" : "椛"},
 }
+
+const music_name = {
+	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
+}

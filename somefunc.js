@@ -1,8 +1,9 @@
 
-function getAttr()
+function getAttr(attr_txt="0")
 {
+	if(attr_txt=="0")attr_txt = musicdata.attribute;
 	let attr_num=0;
-	switch(musicdata.attribute){
+	switch(attr_txt){
 		case "em" : attr_num = 0; break;
 		case "co" : attr_num = 1; break;
 		case "ro" : attr_num = 2; break;

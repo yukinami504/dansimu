@@ -1,3 +1,17 @@
+function getMusicData()
+{
+	console.log("getmusic");
+	const keydata = Object.keys(music_name);
+	let select = document.getElementById("ms");
+	for(let j=0;j<keydata.length;j++)
+	{
+		let option = document.createElement("option");
+		option.text = keydata[j];
+		option.value = music_name[keydata[j]].id;
+		select.appendChild(option);
+	}
+}
+
 function getOtherData()
 {
 	console.log("getothers");
