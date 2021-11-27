@@ -20,6 +20,10 @@ header .headline{
   margin: 0 20px;
 }
 
+p .id {
+	cursor: pointer;
+}
+
 table {
   border-collapse: collapse;
   border: solid 1px #111;
