@@ -165,7 +165,9 @@ input.addEventListener('change', () => {
 	}
 	
 });*/
-ms_list.addEventListener('click', () => {
+
+var clickEventType = (( window.ontouchstart!==null ) ? 'click':'touchend');//スマホか否か
+ms_list.addEventListener(clickEventType, () => {
     //alert('event');
     console.log('event');
     console.log(ms_list.value);
