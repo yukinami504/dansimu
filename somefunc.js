@@ -76,3 +76,8 @@ function random_judge(threshold=100)//threshold(%)の確率でtrueを返す
 	return (ran*100 < threshold);
 }
 
+function visText()
+{
+	document.getElementById("text1").style.display = "block";
+}
+

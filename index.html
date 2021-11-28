@@ -30,7 +30,10 @@
 	<button type="button" onclick="getHrnData()">getHrnData()</button>
 	<button type="button" onclick="getOtherData()">getOtherData()</button>
 	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
-	
+	<h3>お知らせ</h3>
+	<blockquote>
+	(2021.11.28) 現在実装されている全SSRを実装しました。
+	</blockquote>
 	<h3>曲選択</h3>
 		<p>
 			<select name="music" id="ms" required>
@@ -110,6 +113,7 @@
 	<div id="score1">
 		<p>
 			総戦力 <input type="text" id="tb1" value="5000" maxlength="7"><br>
+			<input type="checkbox" id="cb1" name="mb_vis">ミタマバースト発動タイミングを表示<br>
 			シミュレーション回数 <select name="simunum" id="sm1">
 				<option value="1">1</option>
 				<option value="10">10</option>
@@ -119,7 +123,7 @@
 			</select>
 			<button type="button" onclick="calcScore()">推定スコア算出</button>
 		</p>
-		<p id="text1">ミタマバースト発動タイミング ： </p>
+		<p id="text1" class="text-hidden">ミタマバースト発動タイミング ： </p>
 	</div>
 	<div id="score2">
 		<p id="text2_max"></p>
@@ -354,7 +358,7 @@ function calcScore()
 		
 		obj.type = "n";
 		obj.combo = notes[i].id;
-		obj.time = ((musicdata.offset)+((notes[i].bar-1)*bar_time)+((notes[i].tick*bar_time)/1920));
+		obj.time = ((musicdata.offset)+((notes[i].bar-1)*bar_time)+((notes[i].tick*bar_time)/1920));//拍子によって1920は変わる
 		notes_arr[i] = obj;
 	}
 	console.log(notes_arr)
@@ -417,6 +421,7 @@ function calcScore()
 	else {
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： ミタマバーストがスコアアップ系じゃないよ！";
 	}
+	if(document.getElementById("cb1").checked==true)visText();
 
 	
 	//スコア推定

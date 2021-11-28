@@ -5,7 +5,6 @@
   <meta name="viewport">
   <title>ミタマカード追加用</title>
   <script src="dictionary.js"></script>
-  <script src="mtmdata.js"></script>
   <script src="testdata.js"></script>
   
 </head>
@@ -156,6 +155,76 @@
 
 <script>
 let mtm_json;
+
+
+const new_data = 
+{
+	"id" : 1002,
+	"name" : "幻想の結界・安寧",
+	"rare" : "ssr",
+	"character" : "博麗霊夢",
+	"attr" : "co",
+	"release_date" : "2021/08/03",
+	"status" : 
+	{
+		"max_st" : [2309,5506,5207],//em,co,ro
+		"min_st" : [393,1352,1262],//em,co,ro
+		"burst1" : //ダメージ、回復　スコアアップ、無敵、コンボ継続の順
+		{
+			"cat" : "heal",
+			"num" : [60,65,70] //レベル3での値
+		},
+		"burst2" : //damage, heal, score, invinc, combo
+		{
+			"cat" : "combo",
+			"num" : [4,6,8] //レベル3での値
+		},
+		"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
+		{
+			"cat" : "judge",
+			"num" : [[5,41,2.5],[5,51,3.5],[5,61,4.5]]
+		},
+		"odekake" :
+		{
+			"cat" : "force",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
+			"num" : [30,32,35]
+		}
+	}
+};
+
+const new_status_data = 
+{
+	"max_st" : [2309,5506,5207],//em,co,ro
+	"min_st" : [393,1352,1262],//em,co,ro
+	"burst1" : //ダメージ、回復　スコアアップ、無敵、コンボ継続の順
+	{
+		"cat" : "heal",
+		"num" : [60,65,70] //レベル3での値
+	},
+	"burst2" : //damage, heal, score, invinc, combo
+	{
+		"cat" : "combo",
+		"num" : [4,6,8] //レベル3での値
+	},
+	"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
+	{
+		"cat" : "judge",
+		"num" : [[5,41,2.5],[5,51,3.5],[5,61,4.5]]
+	},
+	"odekake" :
+	{
+		"cat" : "force",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
+		"num" : [30,32,35]
+	}
+};
+
+const new_skill_data = 
+{
+	"cat" : "force",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
+	"num" : [30,32,35]
+}
+
+let testtext = '[{"id":1001,"name":"御魂鎮めし、清浄なる神楽","rare":"ssr","character":"博麗霊夢","attr":"ro","release_date":"2021/08/03","status":{"max_st":[2440,4064,5506],"min_st":[475,1011,1487],"burst1":{"cat":"heal","num":[60,65,70]},"burst2":{"cat":"combo","num":[4,6,8]},"effect":{"cat":"judge","num":[[6,42,3],[6,52,4.2],[6,62,5.4]]},"odekake":{"cat":"drop","num":[35,37,40]}}},{"id":0,"name":null,"rare":null,"character":null,"attr":null,"release_date":"2021/08/03","status":{"max_st":[0,0,0],"min_st":[0,0,0],"burst1":null,"burst2":null,"effect":null,"odekake":null}}]';
 	
 let eof_data =
 {
@@ -314,6 +383,14 @@ function json_add()
 		//testtest 3 霧雨魔理沙 2021/08/03 2 0 0 2 heal invinc 0 force
 		
 		let new_json = Object.assign({},new_data);//新しいデータを読み込み
+		let new_status_json = Object.assign({},new_status_data);//新しいデータを読み込み
+		let new_burst1_json = Object.assign({},new_skill_data);//新しいデータを読み込み
+		let new_burst2_json = Object.assign({},new_skill_data);//新しいデータを読み込み
+		let new_effect_json = Object.assign({},new_skill_data);//新しいデータを読み込み
+		let new_odekake_json = Object.assign({},new_skill_data);//新しいデータを読み込み
+		let new_max_st_json = new Array(3);
+		let new_min_st_json = new Array(3);
+		
 		new_json.name = mtm_name;
 		let rare_num = ["n","r","sr","ssr"];
 		let attr_num = ["em","co","ro"];
@@ -394,7 +471,7 @@ function json_add()
 				[[8,43,4],[8,53,5.6],[8,63,7.2]],
 			],
 			[//SSR 回復(6,7,8)、スコアアップ(5,6,7)、判定強化(5,6,7)
-				[[6,26,3,3],[6,31,3.3,3],[6,36,6.3,4]],
+				[[6,26,3,3],[6,31,3.3,3],[6,36,3.6,4]],
 				[[7,26,3.5,3],[7,31,3.8,3],[7,36,4.2,4]],
 				[[8,27,4,3],[8,32,4.4,3],[8,38,4.8,4]],
 				[[5,41,2.5,22],[5,51,3.5,23],[5,61,4.5,25]],
@@ -429,27 +506,35 @@ function json_add()
 		new_json.attr = attr_num[mtm_attr1];
 		new_json.release_date = mtm_reldate;
 		
-		new_json.status.max_st[first_attr] = stat_max_num[mtm_rare][mtm_stat1][mtm_stat2][0];
-		new_json.status.max_st[second_attr] = stat_max_num[mtm_rare][mtm_stat1][mtm_stat2][1];
-		new_json.status.max_st[third_attr] = stat_max_num[mtm_rare][mtm_stat1][mtm_stat2][2];
-		new_json.status.min_st[first_attr] = stat_min_num[mtm_rare][mtm_stat1][mtm_stat2][0];
-		new_json.status.min_st[second_attr] = stat_min_num[mtm_rare][mtm_stat1][mtm_stat2][1];
-		new_json.status.min_st[third_attr] = stat_min_num[mtm_rare][mtm_stat1][mtm_stat2][2];
+		new_max_st_json[first_attr] = stat_max_num[mtm_rare][mtm_stat1][mtm_stat2][0];
+		new_max_st_json[second_attr] = stat_max_num[mtm_rare][mtm_stat1][mtm_stat2][1];
+		new_max_st_json[third_attr] = stat_max_num[mtm_rare][mtm_stat1][mtm_stat2][2];
+		new_min_st_json[first_attr] = stat_min_num[mtm_rare][mtm_stat1][mtm_stat2][0];
+		new_min_st_json[second_attr] = stat_min_num[mtm_rare][mtm_stat1][mtm_stat2][1];
+		new_min_st_json[third_attr] = stat_min_num[mtm_rare][mtm_stat1][mtm_stat2][2];
 		
-		formElms.st_em.value = new_json.status.max_st[0];
-		formElms.st_co.value = new_json.status.max_st[1];
-		formElms.st_ro.value = new_json.status.max_st[2];
+		formElms.st_em.value = new_status_json.max_st[0];
+		formElms.st_co.value = new_status_json.max_st[1];
+		formElms.st_ro.value = new_status_json.max_st[2];
 		
-		new_json.status.burst1.cat = burst1_name[mtm_burst1];
-		new_json.status.burst2.cat = burst2_name[mtm_burst2];
-		new_json.status.effect.cat = effect_name[Math.floor(mtm_effect/3)];
-		new_json.status.odekake.cat = odekake_name[mtm_odekake];
+		new_burst1_json.cat = burst1_name[mtm_burst1];
+		new_burst2_json.cat = burst2_name[mtm_burst2];
+		new_effect_json.cat = effect_name[Math.floor(mtm_effect/3)];
+		new_odekake_json.cat = odekake_name[mtm_odekake];
 		
-		new_json.status.burst1.num = burst1_num[mtm_rare][mtm_burst1];
-		new_json.status.burst2.num = burst2_num[mtm_burst2];//SSRのみ
-		new_json.status.effect.num = effect_num[mtm_rare][mtm_effect];
-		new_json.status.odekake.num = odekake_num[mtm_rare][mtm_odekake];
+		new_burst1_json.num = burst1_num[mtm_rare][mtm_burst1];
+		new_burst2_json.num = burst2_num[mtm_burst2];//SSRのみ
+		new_effect_json.num = effect_num[mtm_rare][mtm_effect];
+		new_odekake_json.num = odekake_num[mtm_rare][mtm_odekake];
 		
+		new_status_json.max_st = new_max_st_json;
+		new_status_json.min_st = new_min_st_json;
+		
+		new_status_json.burst1 = new_burst1_json;
+		new_status_json.burst2 = new_burst2_json;
+		new_status_json.effect = new_effect_json;
+		new_status_json.odekake = new_odekake_json;
+		new_json.status = new_status_json;
 		new_json.id = make_id(mtm_rare);
 		
 		console.log(new_json);
@@ -514,7 +599,7 @@ function txt_output()
 	
 	//EOFを追加してテキスト化
 	mtm_json.push(eof_data);
-	let mtm_txt = JSON.stringify(mtm_json);
+	let mtm_txt = JSON.stringify(mtm_json,null,2);
 	console.log(mtm_txt);
 	
 	//let output_txt = "let mtmdata=\'" + mtm_txt2 + "'";

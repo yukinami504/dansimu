@@ -20,8 +20,17 @@ header .headline{
   margin: 0 20px;
 }
 
-p .ms{
+.ms{
 	cursor: pointer;
+}
+.text-hidden{
+	display: none;
+}
+
+blockquote {
+	font-size: 100%;
+	background-color: #eee;
+	color: #a0a;
 }
 
 table {

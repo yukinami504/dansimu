@@ -44,7 +44,7 @@ function getMtmData()
 			console.log(obj[j].id);
 			//selectboxに追加
 			let option = document.createElement("option");
-			if(obj[j].character!=null)option.text = obj[j].rare.toUpperCase() + chara_name[obj[j].character].name + obj[j].attr + " ["+obj[j].name+"]";
+			if(obj[j].character!=null)option.text = obj[j].rare.toUpperCase() + chara_name[obj[j].character].name + obj[j].attr.charAt(0).toUpperCase()+obj[j].attr.charAt(1) + " ["+obj[j].name+"]";
 			else option.text = obj[j].character;
 			option.value = j;
 			select.appendChild(option);
