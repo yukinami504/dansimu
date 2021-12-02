@@ -33,6 +33,15 @@ function getOtherData()
 function getMtmData()
 {
 	console.log("getmitama");
+	//mtmdata_ssrとかmtmdata_srとかを作ってここで統合する？
+	/*
+		mtmdata:let, other:const
+		const mtmdata_all = mtmdata_ssr.concat(mtmdata_sr,mtmdata_r,mtmdata_n);
+		mtmdata = mtmdata_all;
+		//もしくは
+		mtmdata = mtmdata_ssr.concat(mtmdata_sr,mtmdata_r,mtmdata_n);
+		
+	*/
 	const obj = mtmdata;
 	
 	for(i=1;i<=5;i++)
