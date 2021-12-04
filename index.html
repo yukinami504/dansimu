@@ -32,6 +32,7 @@
 	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
 	<h3>お知らせ</h3>
 	<blockquote>
+	(2021.12.05) イベントSSRと楽曲PanneDemonologyを実装しました。<br>
 	(2021.11.28) 現在実装されている全SSRを実装しました。
 	</blockquote>
 	<h3>曲選択</h3>
@@ -405,18 +406,18 @@ function calcScore()
 				else if(51<=notes_arr[j].combo&&notes_arr[j].combo<=100)note_score*=1.01;
 				else note_score*=((100+(Math.floor((notes_arr[j].combo+99)/100)))/100);
 				
-				burst_score+=Math.floor(note_score);
+				burst_score+=Math.round(note_score);
 				j++;
 			}
-			//console.log(i,burst_score);
+			console.log(i,burst_score);
 			if(burst_score>max_burst_score){
 				max_burst_score = burst_score;
 				max_burst_time = notes_arr[i].time;
 				max_i=i;
 			}
 		}
-		console.log(max_i+"コンボ目に撃ったらいいよ！");
-		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+max_i+"コンボ目に撃ったらいいよ！";
+		console.log((max_i++)+"コンボ目に撃ったらいいよ！");
+		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+(max_i++)+"コンボ目に撃ったらいいよ！";
 	}
 	else {
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： ミタマバーストがスコアアップ系じゃないよ！";

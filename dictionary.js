@@ -62,4 +62,5 @@ const chara_name = {
 
 const music_name = {
 	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
+	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
 }
