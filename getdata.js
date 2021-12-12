@@ -24,7 +24,7 @@ function getOtherData()
 			let option = document.createElement("option");
 			option.text = "+"+(j/100)+"%";
 			option.value = j;
-			if(j==250)option.selected = true;
+			if(j==500)option.selected = true;
 			select.appendChild(option);
 		}
 	}
