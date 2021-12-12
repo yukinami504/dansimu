@@ -58,9 +58,11 @@ const chara_name = {
 	"秋穣子" : {"id" : 55, "name" : "穣子"},
 	"秋静葉" : {"id" : 56, "name" : "静葉"},
 	"ヘカーティア・ラピスラズリ" : {"id" : 57, "name" : "ヘカテ"},
+	"紅美鈴" : {"id" : 58, "name" : "美鈴"},
 }
 
 const music_name = {
 	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
 	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
+	"エピクロスの虹はもう見えない" : {"id" : "epkrs", "attr" : "co"},
 }
