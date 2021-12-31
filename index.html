@@ -7,6 +7,7 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="dictionary.js"></script>
   <script src="mtmdata.js"></script>
+  <script src="mtmdata2.js"></script>
   <script src="getdata.js"></script>
   <script src="somefunc.js"></script>
   
@@ -32,9 +33,9 @@
 	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
 	<h3>お知らせ</h3>
 	<blockquote>
-	(2021.12.13) イベントSSRと楽曲「エピクロスの虹はもう見えない」を実装しました。<br>
-	(2021.12.05) イベントSSRと楽曲「PanneDemonology」を実装しました。<br>
-	(2021.11.28) 現在実装されている全SSRを実装しました。
+	(2021.12.31) 開花ボーナスを8.0%まで拡張しました。<br>
+	(2021.12.31) イベントSSRと一部のSRを実装しました。<br>
+	(2021.12.13) イベントSSRと楽曲「エピクロスの虹はもう見えない」を実装しました。
 	</blockquote>
 	<h3>曲選択</h3>
 		<p>
@@ -357,10 +358,16 @@ function calcScore()
 	{
 		//console.log(notes[i]);
 		let obj = {type:"n",combo:0,time:0};
+		let bar_start_time = ((musicdata.offset)+((notes[i].bar-1)*bar_time));//拍子によって1920は変わる
+		
+		if(musicdata.barstart_ms[notes[i].bar-1]!=undefined&&musicdata.barstart_ms[notes[i].bar-1]!=null&&musicdata.barstart_ms[notes[i].bar-1]!=-1)bar_start_time = ((musicdata.offset)+musicdata.barstart_ms[notes[i].bar-1]);
+		
+		//console.log(bar_start_time);
+		//console.log(musicdata.barstart_ms[notes[i].bar-1]);
 		
 		obj.type = "n";
 		obj.combo = notes[i].id;
-		obj.time = ((musicdata.offset)+((notes[i].bar-1)*bar_time)+((notes[i].tick*bar_time)/1920));//拍子によって1920は変わる
+		obj.time = (bar_start_time+((notes[i].tick*bar_time)/1920));
 		notes_arr[i] = obj;
 	}
 	console.log(notes_arr)
@@ -410,7 +417,7 @@ function calcScore()
 				burst_score+=Math.round(note_score);
 				j++;
 			}
-			console.log(i,burst_score);
+			//console.log(i,burst_score);
 			if(burst_score>max_burst_score){
 				max_burst_score = burst_score;
 				max_burst_time = notes_arr[i].time;
@@ -517,7 +524,7 @@ function calcScore()
 		events_arr.sort(function(a,b){
 			return (a.time - b.time);
 		});
-		//console.log(events_arr);
+		if(i==0)console.log(events_arr);
 		
 		
 		//スコア計算

@@ -1,467 +1,1594 @@
-const mtmdata = 
-[
-	{
-		"id" : 1001,
-		"name" : "御魂鎮めし、清浄なる神楽",
-		"rare" : "ssr",
-		"character" : "博麗霊夢",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [2440,4064,5506],//em,co,ro
-			"min_st" : [475,1011,1487],//em,co,ro
-			"burst1" : //ダメージ、回復　スコアアップ、無敵、コンボ継続の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : //damage, heal, score, invinc, combo
-			{
-				"cat" : "combo",
-				"num" : [4,6,8] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "judge",
-				"num" : [[6,42,3],[6,52,4.2],[6,62,5.4]]
-			},
-			"odekake" :
-			{
-				"cat" : "drop",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [35,37,40]
-			}
-		}
-	},
-	{
-		"id" : 1002,
-		"name" : "幻想の結界・安寧",
-		"rare" : "ssr",
-		"character" : "博麗霊夢",
-		"attr" : "co",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [2309,5506,5207],//em,co,ro
-			"min_st" : [393,1352,1262],//em,co,ro
-			"burst1" : //ダメージ、回復　スコアアップ、無敵、コンボ継続の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : //damage, heal, score, invinc, combo
-			{
-				"cat" : "combo",
-				"num" : [4,6,8] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "judge",
-				"num" : [[5,41,2.5],[5,51,3.5],[5,61,4.5]]
-			},
-			"odekake" :
-			{
-				"cat" : "force",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [30,32,35]
-			}
-		}
-	},
-	{
-		"id" : 1003,
-		"name" : "禁呪の詠唱、燦爛",
-		"rare" : "ssr",
-		"character" : "霧雨魔理沙",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [5207,2309,5506],//em,co,ro
-			"min_st" : [1262,393,1352],//em,co,ro
-			"burst1" : //ダメージ、回復　スコアアップ、無敵、コンボ継続の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : //damage, heal, score, invinc, combo
-			{
-				"cat" : "invinc",
-				"num" : [4,6,8] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "heal",
-				"num" : [[6,26,3,3],[6,31,3.3,3],[6,36,3.6,4]]
-			},
-			"odekake" :
-			{
-				"cat" : "force",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [30,32,35]
-			}
-		}
-	},
-	{
-		"id" : 1005,
-		"name" : "逢魔刻、ふたり",
-		"rare" : "ssr",
-		"character" : "フランドール・スカーレット",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [2802,3302,6908],//em,co,ro
-			"min_st" : [541,691,1772],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : 
-			{
-				"cat" : "score",
-				"num" : [[4,60],[6,65],[8,70]] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[5,41,2.5,22],[5,51,3.5,23],[5,61,4.5,25]]
-			},
-			"odekake" :
-			{
-				"cat" : "drop",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [35,37,40]
-			}
-		}
-	},
-	{
-		"id" : 1008,
-		"name" : "ぜったいにとけない！",
-		"rare" : "ssr",
-		"character" : "チルノ",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [3302,2802,6908],//em,co,ro
-			"min_st" : [691,541,1772],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : 
-			{
-				"cat" : "score",
-				"num" : [[4,60],[6,65],[8,70]] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[7,43,3.5,22],[7,53,4.9,23],[7,63,6.3,25]]
-			},
-			"odekake" :
-			{
-				"cat" : "bell",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [70,75,80]
-			}
-		}
-	},
-	{
-		"id" : 1017,
-		"name" : "ルナティック・ドリーマー",
-		"rare" : "ssr",
-		"character" : "宇佐見菫子",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [2602,4406,6008],//em,co,ro
-			"min_st" : [481,1022,1502],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "damage",
-				"num" : [8,9,10] //レベル3での値
-			},
-			"burst2" : 
-			{
-				"cat" : "score",
-				"num" : [[4,60],[6,65],[8,70]] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[6,42,3,22],[6,52,4.2,23],[6,62,5.4,25]]
-			},
-			"odekake" :
-			{
-				"cat" : "time",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [16,17,18]
-			}
-		}
-	},
-	{
-		"id" : 1018,
-		"name" : "番頭神の過ごし方",
-		"rare" : "ssr",
-		"character" : "庭渡久侘歌",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [2802,3302,6908],//em,co,ro
-			"min_st" : [541,691,1772],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : 
-			{
-				"cat" : "score",
-				"num" : [[4,60],[6,65],[8,70]] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[6,42,3,22],[6,52,4.2,23],[6,62,5.4,25]]
-			},
-			"odekake" :
-			{
-				"cat" : "drop",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [35,37,40]
-			}
-		}
-	},
-	{
-		"id" : 1028,
-		"name" : "兎騒がせな月の姫",
-		"rare" : "ssr",
-		"character" : "蓬莱山輝夜",
-		"attr" : "ro",
-		"release_date" : "2021/09/10",
-		"status" : 
-		{
-			"max_st" : [3302,2802,6908],//em,co,ro
-			"min_st" : [691,541,1772],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : 
-			{
-				"cat" : "score",
-				"num" : [[4,60],[6,65],[8,70]] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[5,41,2.5,22],[5,51,3.5,23],[5,61,4.5,25]]
-			},
-			"odekake" :
-			{
-				"cat" : "bell",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [70,75,80]
-			}
-		}
-	},
-	{
-		"id" : 1039,
-		"name" : "遥か見渡すテレグノシス",
-		"rare" : "ssr",
-		"character" : "犬走椛",
-		"attr" : "ro",
-		"release_date" : "2021/10/29",
-		"status" : 
-		{
-			"max_st" : [3302,2790,6920],//em,co,ro
-			"min_st" : [691,537,1776],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "heal",
-				"num" : [60,65,70] //レベル3での値
-			},
-			"burst2" : 
-			{
-				"cat" : "score",
-				"num" : [[4,60],[6,65],[8,70]] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[5,41,2.5,22],[5,51,3.5,23],[5,61,4.5,25]]
-			},
-			"odekake" :
-			{
-				"cat" : "bell",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [70,75,80]
-			}
-		}
-	},
-	{
-		"id" : 1043,
-		"name" : "粮を嘗したまひて",
-		"rare" : "ssr",
-		"character" : "博麗霊夢",
-		"attr" : "ro",
-		"release_date" : "2021/11/19",
-		"status" : 
-		{
-			"max_st" : [2984,4740,6203],//em,co,ro
-			"min_st" : [595,1122,1561],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "damage",
-				"num" : [8,9,10] //レベル3での値
-			},
-			"burst2" : 
-			{
-				"cat" : "score",
-				"num" : [[4,60],[6,65],[8,70]] //レベル3での値
-			},
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[5,41,2.5,22],[5,51,3.5,23],[5,61,4.5,25]]
-			},
-			"odekake" :
-			{
-				"cat" : "piece",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [25,27,30]
-			}
-		}
-	},
-	{
-		"id" : 2017,
-		"name" : "わりと困ったちゃん",
-		"rare" : "sr",
-		"character" : "八雲紫",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [2806,2382,5868],//em,co,ro
-			"min_st" : [645,506,1656],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "score",
-				"num" : [[4,40],[6,45],[8,50]] //レベル3での値
-			},
-			"burst2" : null,
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[8,43,4,17],[8,53,5.6,18],[8,63,7.2,20]]
-			},
-			"odekake" :
-			{
-				"cat" : "drop",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [25,27,30]
-			}
-		}
-	},
-	{
-		"id" : 2022,
-		"name" : "ポルターガイスト夜想曲 嬰ハ短調",
-		"rare" : "sr",
-		"character" : "ルナサ・プリズムリバー",
-		"attr" : "ro",
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [2382,2806,5868],//em,co,ro
-			"min_st" : [506,645,1656],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "score",
-				"num" : [[4,40],[6,45],[8,50]] //レベル3での値
-			},
-			"burst2" : null,
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[6,42,3,17],[6,52,4.2,18],[6,62,5.4,20]]
-			},
-			"odekake" :
-			{
-				"cat" : "bell",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [50,55,60]
-			}
-		}
-	},
-	{
-		"id" : 2028,
-		"name" : "水配りの試練",
-		"rare" : "sr",
-		"character" : "庭渡久侘歌",
-		"attr" : "ro",
-		"release_date" : "2021/08/14",
-		"status" : 
-		{
-			"max_st" : [2382,2806,5868],//em,co,ro
-			"min_st" : [506,645,1656],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "score",
-				"num" : [[4,40],[6,45],[8,50]] //レベル3での値
-			},
-			"burst2" : null,
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[7,43,3.5,17],[7,53,4.9,18],[7,63,6.3,20]]
-			},
-			"odekake" :
-			{
-				"cat" : "drop",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : [25,27,30]
-			}
-		}
-	},
-	{
-		"id" : 2036,
-		"name" : "愉快な忘れ傘",
-		"rare" : "sr",
-		"character" : "多々良小傘",
-		"attr" : "ro",
-		"release_date" : "2021/09/04",
-		"status" : 
-		{
-			"max_st" : [2382,2806,5868],//em,co,ro
-			"min_st" : [506,645,1656],//em,co,ro
-			"burst1" : //ダメージ(damage)、回復(heal)　スコアアップ(score)、無敵(invinc)、コンボ継続(combo)の順
-			{
-				"cat" : "score",
-				"num" : [[4,40],[6,45],[8,50]] //レベル3での値
-			},
-			"burst2" : null,
-			"effect" : //回復、スコアアップ、判定強化(judge)、無敵、コンボ継続の順
-			{
-				"cat" : "score",
-				"num" : [[7,43,3.5,17],[7,53,4.9,18],[7,63,6.3,20]]
-			},
-			"odekake" :
-			{
-				"cat" : "drop",//戦力(force)、雫(drop)、鈴(bell)、ピース(piece)、時間(time)
-				"num" : 30
-			}
-		}
-	},
-	{
-		"id" : 0,
-		"name" : null,
-		"rare" : null,
-		"character" : null,
-		"attr" : null,
-		"release_date" : "2021/08/03",
-		"status" : 
-		{
-			"max_st" : [0,0,0],
-			"min_st" : [0,0,0],
-			"burst1" : null,
-			"burst2" : null,
-			"effect" : null,
-			"odekake" : null
-		}
-	},
+let mtmdata_2=[
+  {
+    "id": 2001,
+    "name": "荒々しくも母なる大地よ",
+    "rare": "sr",
+    "character": "比那名居天子",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2382,
+        5868,
+        2806
+      ],
+      "min_st": [
+        506,
+        1656,
+        645
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": {
+        "cat": "damage",
+        "num": [
+          8,
+          9,
+          10
+        ]
+      },
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            6,
+            42,
+            3,
+            17
+          ],
+          [
+            6,
+            52,
+            4.2,
+            18
+          ],
+          [
+            6,
+            62,
+            5.4,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "drop",
+        "num": [
+          25,
+          27,
+          30
+        ]
+      }
+    }
+  },
+  {
+    "id": 2002,
+    "name": "地獄の沙汰も猫次第",
+    "rare": "sr",
+    "character": "火焔猫燐",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2210,
+        5105,
+        3744
+      ],
+      "min_st": [
+        449,
+        1404,
+        955
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": {
+        "cat": "damage",
+        "num": [
+          8,
+          9,
+          10
+        ]
+      },
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            7,
+            43,
+            3.5,
+            17
+          ],
+          [
+            7,
+            53,
+            4.9,
+            18
+          ],
+          [
+            7,
+            63,
+            6.3,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "time",
+        "num": [
+          12,
+          13,
+          14
+        ]
+      }
+    }
+  },
+  {
+    "id": 2003,
+    "name": "真夏のルシフェリン",
+    "rare": "sr",
+    "character": "リグル・ナイトバグ",
+    "attr": "ro",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        4425,
+        1961,
+        4676
+      ],
+      "min_st": [
+        1180,
+        367,
+        1263
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": {
+        "cat": "damage",
+        "num": [
+          8,
+          9,
+          10
+        ]
+      },
+      "effect": {
+        "cat": "judge",
+        "num": [
+          [
+            6,
+            42,
+            3
+          ],
+          [
+            6,
+            52,
+            4.2
+          ],
+          [
+            6,
+            62,
+            5.4
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2004,
+    "name": "七色の人形遣い",
+    "rare": "sr",
+    "character": "アリス・マーガトロイド",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2210,
+        5105,
+        3744
+      ],
+      "min_st": [
+        449,
+        1404,
+        955
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": {
+        "cat": "damage",
+        "num": [
+          8,
+          9,
+          10
+        ]
+      },
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            7,
+            43,
+            3.5,
+            17
+          ],
+          [
+            7,
+            53,
+            4.9,
+            18
+          ],
+          [
+            7,
+            63,
+            6.3,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "time",
+        "num": [
+          12,
+          13,
+          14
+        ]
+      }
+    }
+  },
+  {
+    "id": 2005,
+    "name": "いなばの白うさぎ",
+    "rare": "sr",
+    "character": "因幡てゐ",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        5105,
+        3744,
+        2210
+      ],
+      "min_st": [
+        1404,
+        955,
+        449
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": {
+        "cat": "damage",
+        "num": [
+          8,
+          9,
+          10
+        ]
+      },
+      "effect": {
+        "cat": "combo",
+        "num": [
+          [
+            7,
+            43,
+            3.5
+          ],
+          [
+            7,
+            53,
+            4.9
+          ],
+          [
+            7,
+            63,
+            6.3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2006,
+    "name": "蓬莱の玉の枝",
+    "rare": "sr",
+    "character": "蓬莱山輝夜",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2210,
+        5105,
+        3744
+      ],
+      "min_st": [
+        449,
+        1404,
+        955
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "combo",
+        "num": [
+          [
+            8,
+            43,
+            4
+          ],
+          [
+            8,
+            53,
+            5.6
+          ],
+          [
+            8,
+            63,
+            7.2
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2007,
+    "name": "姉の心、妹知らず",
+    "rare": "sr",
+    "character": "古明地さとり",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        4676,
+        4425,
+        1961
+      ],
+      "min_st": [
+        1263,
+        1180,
+        367
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "judge",
+        "num": [
+          [
+            6,
+            42,
+            3
+          ],
+          [
+            6,
+            52,
+            4.2
+          ],
+          [
+            6,
+            62,
+            5.4
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2008,
+    "name": "十進法を採用しました？",
+    "rare": "sr",
+    "character": "ルーミア",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        1961,
+        4676,
+        4425
+      ],
+      "min_st": [
+        367,
+        1263,
+        1180
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "judge",
+        "num": [
+          [
+            6,
+            42,
+            3
+          ],
+          [
+            6,
+            52,
+            4.2
+          ],
+          [
+            6,
+            62,
+            5.4
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2009,
+    "name": "語られる怪力乱神",
+    "rare": "sr",
+    "character": "星熊勇儀",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        5868,
+        2806,
+        2382
+      ],
+      "min_st": [
+        1656,
+        645,
+        506
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            6,
+            42,
+            3,
+            17
+          ],
+          [
+            6,
+            52,
+            4.2,
+            18
+          ],
+          [
+            6,
+            62,
+            5.4,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "drop",
+        "num": [
+          25,
+          27,
+          30
+        ]
+      }
+    }
+  },
+  {
+    "id": 2010,
+    "name": "埴輪軍団、突撃！",
+    "rare": "sr",
+    "character": "杖刀偶磨弓",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        4676,
+        1961,
+        4425
+      ],
+      "min_st": [
+        1263,
+        367,
+        1180
+      ],
+      "burst1": {
+        "cat": "invinc",
+        "num": [
+          4,
+          6,
+          8
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "heal",
+        "num": [
+          [
+            9,
+            27,
+            4.5,
+            2
+          ],
+          [
+            9,
+            32,
+            4.9,
+            2
+          ],
+          [
+            9,
+            38,
+            5.4,
+            3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2011,
+    "name": "聖童女・大物忌",
+    "rare": "sr",
+    "character": "物部布都",
+    "attr": "ro",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        3744,
+        2210,
+        5105
+      ],
+      "min_st": [
+        955,
+        449,
+        1404
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            7,
+            43,
+            3.5,
+            17
+          ],
+          [
+            7,
+            53,
+            4.9,
+            18
+          ],
+          [
+            7,
+            63,
+            6.3,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "time",
+        "num": [
+          12,
+          13,
+          14
+        ]
+      }
+    }
+  },
+  {
+    "id": 2012,
+    "name": "末那識のチアダンサー",
+    "rare": "sr",
+    "character": "丁礼田舞",
+    "attr": "ro",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2210,
+        3744,
+        5105
+      ],
+      "min_st": [
+        449,
+        955,
+        1404
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "invinc",
+        "num": [
+          [
+            7,
+            43,
+            3.5
+          ],
+          [
+            7,
+            53,
+            4.9
+          ],
+          [
+            7,
+            63,
+            6.3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "piece",
+        "num": [
+          15,
+          17,
+          20
+        ]
+      }
+    }
+  },
+  {
+    "id": 2013,
+    "name": "祟り神「赤口さま」",
+    "rare": "sr",
+    "character": "洩矢諏訪子",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        4425,
+        4676,
+        1961
+      ],
+      "min_st": [
+        1180,
+        1263,
+        367
+      ],
+      "burst1": {
+        "cat": "invinc",
+        "num": [
+          4,
+          6,
+          8
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "heal",
+        "num": [
+          [
+            7,
+            26,
+            3.5,
+            2
+          ],
+          [
+            7,
+            31,
+            3.8,
+            2
+          ],
+          [
+            7,
+            36,
+            4.2,
+            3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2014,
+    "name": "月夜のデュラハン",
+    "rare": "sr",
+    "character": "赤蛮奇",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        3744,
+        5105,
+        2210
+      ],
+      "min_st": [
+        955,
+        1404,
+        449
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "invinc",
+        "num": [
+          [
+            8,
+            43,
+            4
+          ],
+          [
+            8,
+            53,
+            5.6
+          ],
+          [
+            8,
+            63,
+            7.2
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "piece",
+        "num": [
+          15,
+          17,
+          20
+        ]
+      }
+    }
+  },
+  {
+    "id": 2015,
+    "name": "和を以て貴しと為せ",
+    "rare": "sr",
+    "character": "豊聡耳神子",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        5105,
+        2210,
+        3744
+      ],
+      "min_st": [
+        1404,
+        449,
+        955
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            7,
+            43,
+            3.5,
+            17
+          ],
+          [
+            7,
+            53,
+            4.9,
+            18
+          ],
+          [
+            7,
+            63,
+            6.3,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "time",
+        "num": [
+          12,
+          13,
+          14
+        ]
+      }
+    }
+  },
+  {
+    "id": 2016,
+    "name": "今日も神社は異常なし",
+    "rare": "sr",
+    "character": "高麗野あうん",
+    "attr": "ro",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        1961,
+        4425,
+        4676
+      ],
+      "min_st": [
+        367,
+        1180,
+        1263
+      ],
+      "burst1": {
+        "cat": "invinc",
+        "num": [
+          4,
+          6,
+          8
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "heal",
+        "num": [
+          [
+            8,
+            27,
+            4,
+            2
+          ],
+          [
+            8,
+            32,
+            4.4,
+            2
+          ],
+          [
+            7,
+            38,
+            4.8,
+            3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2017,
+    "name": "わりと困ったちゃん",
+    "rare": "sr",
+    "character": "八雲紫",
+    "attr": "ro",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2806,
+        2382,
+        5868
+      ],
+      "min_st": [
+        645,
+        506,
+        1656
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            8,
+            43,
+            4,
+            17
+          ],
+          [
+            8,
+            53,
+            5.6,
+            18
+          ],
+          [
+            8,
+            63,
+            7.2,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "drop",
+        "num": [
+          25,
+          27,
+          30
+        ]
+      }
+    }
+  },
+  {
+    "id": 2018,
+    "name": "生まれ持っての天邪鬼",
+    "rare": "sr",
+    "character": "鬼人正邪",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        5105,
+        2210,
+        3744
+      ],
+      "min_st": [
+        1404,
+        449,
+        955
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "invinc",
+        "num": [
+          [
+            6,
+            42,
+            3
+          ],
+          [
+            6,
+            52,
+            4.2
+          ],
+          [
+            6,
+            62,
+            5.4
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "piece",
+        "num": [
+          15,
+          17,
+          20
+        ]
+      }
+    }
+  },
+  {
+    "id": 2019,
+    "name": "青色の春紫苑",
+    "rare": "sr",
+    "character": "依神紫苑",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2210,
+        5105,
+        3744
+      ],
+      "min_st": [
+        449,
+        1404,
+        955
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "combo",
+        "num": [
+          [
+            6,
+            42,
+            3
+          ],
+          [
+            6,
+            52,
+            4.2
+          ],
+          [
+            6,
+            62,
+            5.4
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 2020,
+    "name": "外来の化け狸",
+    "rare": "sr",
+    "character": "二ツ岩マミゾウ",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        3744,
+        5105,
+        2210
+      ],
+      "min_st": [
+        955,
+        1404,
+        449
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            8,
+            43,
+            4,
+            17
+          ],
+          [
+            8,
+            53,
+            5.6,
+            18
+          ],
+          [
+            8,
+            63,
+            7.2,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "time",
+        "num": [
+          12,
+          13,
+          14
+        ]
+      }
+    }
+  },
+  {
+    "id": 2021,
+    "name": "輝く針の剣",
+    "rare": "sr",
+    "character": "少名針妙丸",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        5868,
+        2806,
+        2382
+      ],
+      "min_st": [
+        1656,
+        645,
+        506
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            8,
+            43,
+            4,
+            17
+          ],
+          [
+            8,
+            53,
+            5.6,
+            18
+          ],
+          [
+            8,
+            63,
+            7.2,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "drop",
+        "num": [
+          25,
+          27,
+          30
+        ]
+      }
+    }
+  },
+  {
+    "id": 2022,
+    "name": "ポルターガイスト夜想曲 嬰ハ短調",
+    "rare": "sr",
+    "character": "ルナサ・プリズムリバー",
+    "attr": "ro",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2382,
+        2806,
+        5868
+      ],
+      "min_st": [
+        506,
+        645,
+        1656
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            6,
+            42,
+            3,
+            17
+          ],
+          [
+            6,
+            52,
+            4.2,
+            18
+          ],
+          [
+            6,
+            62,
+            5.4,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "bell",
+        "num": [
+          50,
+          55,
+          60
+        ]
+      }
+    }
+  },
+  {
+    "id": 2023,
+    "name": "メルラン・ハッピーライブ！",
+    "rare": "sr",
+    "character": "メルラン・プリズムリバー",
+    "attr": "co",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        2806,
+        5868,
+        2382
+      ],
+      "min_st": [
+        645,
+        1656,
+        506
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            7,
+            43,
+            3.5,
+            17
+          ],
+          [
+            7,
+            53,
+            4.9,
+            18
+          ],
+          [
+            7,
+            63,
+            6.3,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "bell",
+        "num": [
+          50,
+          55,
+          60
+        ]
+      }
+    }
+  },
+  {
+    "id": 2024,
+    "name": "ワルツ・フォー・レイラ",
+    "rare": "sr",
+    "character": "リリカ・プリズムリバー",
+    "attr": "em",
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        5868,
+        2382,
+        2806
+      ],
+      "min_st": [
+        1656,
+        506,
+        645
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            8,
+            43,
+            4,
+            17
+          ],
+          [
+            8,
+            53,
+            5.6,
+            18
+          ],
+          [
+            8,
+            63,
+            7.2,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "bell",
+        "num": [
+          50,
+          55,
+          60
+        ]
+      }
+    }
+  },
+  {
+    "id": 2025,
+    "name": "七曜の魔女",
+    "rare": "sr",
+    "character": "パチュリー・ノーレッジ",
+    "attr": "co",
+    "release_date": "2021/08/10",
+    "status": {
+      "max_st": [
+        3744,
+        5105,
+        2210
+      ],
+      "min_st": [
+        955,
+        1404,
+        449
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "combo",
+        "num": [
+          [
+            7,
+            43,
+            3.5
+          ],
+          [
+            7,
+            53,
+            4.9
+          ],
+          [
+            7,
+            63,
+            6.3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
+    }
+  },
+  {
+    "id": 0,
+    "name": null,
+    "rare": null,
+    "character": null,
+    "attr": null,
+    "release_date": "2021/08/03",
+    "status": {
+      "max_st": [
+        0,
+        0,
+        0
+      ],
+      "min_st": [
+        0,
+        0,
+        0
+      ],
+      "burst1": null,
+      "burst2": null,
+      "effect": null,
+      "odekake": null
+    }
+  }
 ];
-

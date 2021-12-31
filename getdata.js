@@ -18,12 +18,12 @@ function getOtherData()
 	for(i=1;i<=1;i++)
 	{
 		let select = document.getElementById("bn"+i);
-		let max_bl = 500;
+		let max_bl = 1000;
 		for(j=0;j<=max_bl;j+=25)
 		{
 			let option = document.createElement("option");
-			option.text = "+"+(j/100)+"%";
-			option.value = j;
+			option.text = "+"+((j<=500)?(j/100):(5.0+(j-500)*15/2500))+"%";
+			option.value = ((j<=500)?(j):(500+(j-500)*15/25));
 			if(j==500)option.selected = true;
 			select.appendChild(option);
 		}
@@ -42,6 +42,7 @@ function getMtmData()
 		mtmdata = mtmdata_ssr.concat(mtmdata_sr,mtmdata_r,mtmdata_n);
 		
 	*/
+	mtmdata = mtmdata.concat(mtmdata_2);
 	const obj = mtmdata;
 	
 	for(i=1;i<=5;i++)
