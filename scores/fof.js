@@ -7,6 +7,7 @@ let musicdata =
 	"measure" : "4/4",
 	"BPM" : 152,
 	"offset" : 1566, //楽曲開始時から1小節目までの時間(ms)
+	"barstart_ms" : [null],//i小節目の開始時間(ms),offsetは別
 	"difficulty" : [6,12,17,20,25],
 	"notes" : [129,250,496,573,765]
 }
@@ -128,7 +129,7 @@ let scoredata =
 		{"id":97,"bar":9,"tick":1440,"ms":0,"flag":0,"type":0,"lane":3},
 		{"id":98,"bar":9,"tick":1440,"ms":0,"flag":0,"type":0,"lane":5},
 		{"id":99,"bar":9,"tick":1680,"ms":0,"flag":0,"type":0,"lane":4},
-		{"id":100,"bar":1,"tick":1680,"ms":0,"flag":0,"type":0,"lane":6},
+		{"id":100,"bar":9,"tick":1680,"ms":0,"flag":0,"type":0,"lane":6},
 		
 		{"id":101,"bar":10,"tick":0,"ms":0,		"flag":0,"type":0,"lane":4},
 		{"id":102,"bar":10,"tick":0,"ms":0,		"flag":0,"type":0,"lane":7},

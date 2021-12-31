@@ -7,6 +7,7 @@ let musicdata =
 	"measure" : "4/4",
 	"BPM" : 177,
 	"offset" : -23, //楽曲開始時から1小節目までの時間(ms)18.17-23.07 -23
+	"barstart_ms" : [null],
 	"difficulty" : [7,12,18,23,27],
 	"notes" : [169,253,534,694,1107]
 }
