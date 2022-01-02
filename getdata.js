@@ -146,7 +146,9 @@ function getScoreData(score_id)
 	var sc = document.createElement("script");
 	sc.type = "text/javascript";
 	sc.src = "./scores/" + score_id + ".js";
-	document.head.appendChild(sc);
+	var ele = document.getElementById("scores");
+	ele.appendChild(sc);
+	//document.head.appendChild(sc);
 	
 	console.log(sc);
 	console.log(musicdata);

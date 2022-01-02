@@ -1,4 +1,4 @@
-let musicdata = 
+var musicdata = 
 {
 	"title" : "PanneDemonology",
 	"musicID" : "panne",
@@ -12,7 +12,7 @@ let musicdata =
 	"notes" : [169,253,534,694,1107]
 }
 
-let scoredata =
+var scoredata =
 [
 	[],[],[],[],
 	[
