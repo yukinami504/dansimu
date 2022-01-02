@@ -33,9 +33,10 @@
 	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
 	<h3>お知らせ</h3>
 	<blockquote>
+	(2022.01.03) 楽曲「あいつはイカサマをしている」を追加しました。<br>
+	(2022.01.03) 新規のSSRと一部のSRを追加しました。<br>
 	(2021.12.31) 開花ボーナスを8.0%まで拡張しました。<br>
-	(2021.12.31) イベントSSRと一部のSRを実装しました。<br>
-	(2021.12.13) イベントSSRと楽曲「エピクロスの虹はもう見えない」を実装しました。
+	(2021.12.31) イベントSSRと一部のSRを実装しました。
 	</blockquote>
 	<h3>曲選択</h3>
 		<p>
@@ -367,7 +368,8 @@ function calcScore()
 		
 		obj.type = "n";
 		obj.combo = notes[i].id;
-		obj.time = (bar_start_time+((notes[i].tick*bar_time)/1920));
+		if(notes[i].flag==1)obj.time = (bar_start_time+notes[i].ms);
+		else obj.time = (bar_start_time+((notes[i].tick*bar_time)/1920));
 		notes_arr[i] = obj;
 	}
 	console.log(notes_arr)

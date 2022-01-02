@@ -67,4 +67,5 @@ const music_name = {
 	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
 	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
 	"エピクロスの虹はもう見えない" : {"id" : "epkrs", "attr" : "co"},
+	"あいつはイカサマをしている" : {"id" : "cheat", "attr" : "co"},
 }
