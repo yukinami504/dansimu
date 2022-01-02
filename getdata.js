@@ -142,11 +142,13 @@ function getHrnData()
 
 function getScoreData(score_id)
 {
+	console.log(score_id);
 	var sc = document.createElement("script");
 	sc.type = "text/javascript";
 	sc.src = "./scores/" + score_id + ".js";
 	document.head.appendChild(sc);
 	
+	console.log(sc);
 	console.log(musicdata);
 	//console.log(musicdata);
 	
