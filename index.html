@@ -34,12 +34,17 @@
 	<button type="button" onclick="getOtherData()">getOtherData()</button>
 	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
 	<h3>お知らせ</h3>
+	<div class="open-window" id="releasenote" onclick="obj=document.getElementById('rel_nt').style; obj.display=(obj.display=='none')?'block':'none';">
+	<a style="cursor:pointer;">▼ クリックで展開</a>
+	</div>
+	<div id="rel_nt" style="display:none;clear:both;">
 	<blockquote>
+	(2022.01.04) ミタマカードのフィルタ・ソート機能を追加しました。<br>
 	(2022.01.03) 楽曲「あいつはイカサマをしている」を追加しました。<br>
 	(2022.01.03) 新規のSSRと一部のSRを追加しました。<br>
-	(2021.12.31) 開花ボーナスを8.0%まで拡張しました。<br>
-	(2021.12.31) イベントSSRと一部のSRを実装しました。
+	(2021.12.31) 開花ボーナスを8.0%まで拡張しました。
 	</blockquote>
+	</div>
 	<h3>曲選択</h3>
 		<p>
 			<select name="music" id="ms" required>
@@ -55,10 +60,7 @@
 				<option value="4" selected>Lunatic</option>
 			</select>
 		</p>
-	<h4>諸データ</h4>
-		<p>
-			開花レベルボーナス <select name="bloom" id="bn1" required></select>
-		</p>
+	<!--<h4>諸データ</h4>-->
 		<!--<p>
 			楽曲属性 <select name="music_attr" id="bn2">
 				<option value="0">Em</option>
@@ -67,7 +69,7 @@
 				<option value="3" selected>All</option>
 			</select>
 		</p>-->
-	<h4>ヒロイン編成</h4>
+	<h4>ヒロイン編成＆ボーナス</h4>
 		<p>
 			ヒロイン1: 
 			Lv.<select name="hr1lv" id="lv1" required></select>
@@ -84,7 +86,49 @@
 			Ro補正 <select name="hr2ro" id="st6" required></select>
 			Skill <select name="hr2sk" id="sk2" required></select>
 		</p>
+		<p>
+			開花レベルボーナス <select name="bloom" id="bn1" required></select>
+		</p>
 	<h4>チーム編成 </h4>
+	<div class="open-window" onclick="obj=document.getElementById('fl_srt').style; obj.display=(obj.display=='none')?'block':'none';">
+	<a style="cursor:pointer;">▼ ミタマカードのフィルタ・ソート設定（クリックで開閉）</a>
+	</div>
+	<div class="open-window" id="fl_srt" style="display:none;clear:both;">
+	<h5>フィルタ設定</h5>
+		<span class="col-1">レアリティ</span>
+		<span><label><input type="checkbox" name="fl_ssr" value="fl_ssr" checked>SSR</label></span>
+		<span><label><input type="checkbox" name="fl_sr" value="fl_sr" checked>SR</label></span><br>
+		
+		<span class="col-1">属性</span>
+		<span><label><input type="checkbox" name="fl_em" value="fl_em" checked>Em</label></span>
+		<span><label><input type="checkbox" name="fl_co" value="fl_co" checked>Co</label></span>
+		<span><label><input type="checkbox" name="fl_ro" value="fl_ro" checked>Ro</label></span><br>
+	
+		<span class="col-1">カグラエフェクト</span>
+		<span><label><input type="checkbox" name="fl_score" value="fl_score" checked>スコアアップ</label></span>
+		<span><label><input type="checkbox" name="fl_other" value="fl_other" checked>その他</label></span>
+	
+	<h5>ソート設定</h5>
+	第一優先
+	<select name="sort1" id="sort1">
+		<option value="0" selected>レアリティ</option>
+		<option value="1">実装日</option>
+		<option value="2">総戦力</option>
+		<option value="3">Em属性値</option>
+		<option value="4">Co属性値</option>
+		<option value="5">Ro属性値</option>
+	</select>
+	第二優先
+	<select name="sort2" id="sort2">
+		<option value="0">レアリティ</option>
+		<option value="1" selected>実装日</option>
+		<option value="2">総戦力</option>
+		<option value="3">Em属性値</option>
+		<option value="4">Co属性値</option>
+		<option value="5">Ro属性値</option>
+	</select><br>
+	<div><button type="button" onclick="mtmSort()">フィルタ・ソート設定を適用</button></div>
+	</div>
 	<div id="mtm">
     <p>
 	  1人目:<select name="mitama1" id="m1" size="1" required><option value="0">御霊カードを選択</option></select>
@@ -216,7 +260,8 @@ function calcForce(flag)
 		let member_name = "mitama"+(y+1);
 		let member_sinka = "sinka"+(y+1);
 		let member_level = "level"+(y+1);
-		let member = mtmdata[formElms[member_name].value];
+		//let member = mtmdata[formElms[member_name].value];
+		let member = mtmdata.find((v) => v.id == formElms[member_name].value);
 		let mem_s = parseInt(formElms[member_sinka].value);
 		let mem_l = parseInt(formElms[member_level].value);
 		
@@ -389,7 +434,8 @@ function calcScore()
 	let max_burst_score=0;
 	let max_burst_time=0;
 	
-	let leader = mtmdata[formElms["mitama1"].value];
+	//let leader = mtmdata[formElms["mitama1"].value];
+	let leader = mtmdata.find((v) => v.id == formElms["mitama1"].value);
 	let m_b_info = 	(leader.rare=="ssr")?(leader.status.burst2):
 					(leader.rare=="sr")?(leader.status.burst1):null;
 	
@@ -449,7 +495,8 @@ function calcScore()
 		let member_name = "mitama"+(y+1);
 		let member_sinka = "sinka"+(y+1);
 		let member_level = "level"+(y+1);
-		mitama_members[y] = mtmdata[formElms[member_name].value];
+		//mitama_members[y] = mtmdata[formElms[member_name].value];
+		mitama_members[y] = mtmdata.find((v) => v.id == formElms[member_name].value);
 		let mem_s = parseInt(formElms[member_sinka].value);
 		
 		if(mem_s<2)mitama_eff_lvl[y] = 1;

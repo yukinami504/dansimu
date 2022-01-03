@@ -33,6 +33,20 @@ blockquote {
 	color: #a0a;
 }
 
+.open-window {
+	background-color: #eee;
+}
+
+.col-1 {
+	display: inline-block;
+    width: 150px;
+	font-weight: bold;
+}
+.col-2 {
+	display: inline-block;
+    width: 300px;
+}
+
 table {
   border-collapse: collapse;
   border: solid 1px #111;

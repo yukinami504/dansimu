@@ -56,7 +56,7 @@ function getMtmData()
 			let option = document.createElement("option");
 			if(obj[j].character!=null)option.text = obj[j].rare.toUpperCase() + chara_name[obj[j].character].name + obj[j].attr.charAt(0).toUpperCase()+obj[j].attr.charAt(1) + " ["+obj[j].name+"]";
 			else option.text = obj[j].character;
-			option.value = j;
+			option.value = obj[j].id;
 			select.appendChild(option);
 		}
 		
