@@ -38,6 +38,7 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<blockquote>
+	(2022.01.10) ヒロインスキルを実装しました（要検証）。<br>
 	(2022.01.10) 現在実装済みのSSR,SRミタマカードを追加しました。<br>
 	(2022.01.04) ミタマカードのフィルタ・ソート機能を追加しました。<br>
 	(2022.01.03) 楽曲「あいつはイカサマをしている」を追加しました。<br>
@@ -415,6 +416,7 @@ function calcScore()
 	//setAttr();//曲の属性を設定
 	//calcForce();//一応先に戦力を再計算
 	if(ms_list.value=="0"){alert("曲を選択して下さい"); return;}
+	if(document.getElementById('m1').value=="0"||document.getElementById('m2').value=="0"||document.getElementById('m3').value=="0"||document.getElementById('m4').value=="0"||document.getElementById('m5').value=="0"){alert("ミタマカードの編成に不備があります"); return;}
 	
 	let formElms = document.forms.dataForm;
 	let force = document.getElementById("tb1").value;
