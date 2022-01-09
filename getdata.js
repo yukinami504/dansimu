@@ -90,6 +90,18 @@ function getHrnData()
 	console.log("getheroine");
 	for(i=1;i<=2;i++)
 	{
+		let select = document.getElementById("chr"+i);
+		let ch_arr = Object.keys(chara_name);
+		for(let j in ch_arr)
+		{
+			let option = document.createElement("option");
+			option.text = ch_arr[j];
+			option.value = chara_name[ch_arr[j]].id;
+			select.appendChild(option);
+		}
+	}
+	for(i=1;i<=2;i++)
+	{
 		let select = document.getElementById("lv"+i);
 		let lv_arr = [1,10,25,50,100];
 		for(j=0;j<lv_arr.length;j++)
@@ -126,7 +138,8 @@ function getHrnData()
 			"Em属性のミタマカードの、カグラエフェクトの発動確率+5%",
 			"Co属性のミタマカードの、カグラエフェクトの発動確率+5%",
 			"Ro属性のミタマカードの、カグラエフェクトの発動確率+5%",
-			"3つの属性のミタマカードを編成している時、カグラエフェクトの発動確率+2%"];
+			"3つの属性のミタマカードを編成している時、カグラエフェクトの発動確率+2%",
+			"なし"];
 			
 		for(j=0;j<sk_arr.length;j++)
 		{
