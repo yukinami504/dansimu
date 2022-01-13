@@ -61,6 +61,7 @@ const chara_name = {
 	"紅美鈴" : {"id" : 58, "name" : "美鈴"},
 	"摩多羅隠岐奈" : {"id" : 59, "name" : "隠岐奈"},
 	"寅丸星" : {"id" : 60, "name" : "星"},
+	"ナズーリン" : {"id" : 61, "name" : "ナズ"},
 }
 
 const music_name = {
@@ -68,4 +69,5 @@ const music_name = {
 	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
 	"エピクロスの虹はもう見えない" : {"id" : "epkrs", "attr" : "co"},
 	"あいつはイカサマをしている" : {"id" : "cheat", "attr" : "co"},
+	"Spring of Dreams" : {"id" : "sod", "attr" : "em"},
 }

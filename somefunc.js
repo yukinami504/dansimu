@@ -128,6 +128,7 @@ function mtmSort()
 		case 3: {obj.sort(function(a,b){return (a.status.max_st[0]<=b.status.max_st[0])? 1 : -1}); break;}
 		case 4: {obj.sort(function(a,b){return (a.status.max_st[1]<=b.status.max_st[1])? 1 : -1}); break;}
 		case 5: {obj.sort(function(a,b){return (a.status.max_st[2]<=b.status.max_st[2])? 1 : -1}); break;}
+		case 6: {obj.sort(function(a,b){return (chara_name[a.character].id<chara_name[b.character].id)? -1 : 1}); break;}
 		default:
 	}
 	console.log(obj);
@@ -138,6 +139,7 @@ function mtmSort()
 		case 3: {obj.sort(function(a,b){return ((a.status.max_st[0]<=b.status.max_st[0])? 1 : -1)}); break;}
 		case 4: {obj.sort(function(a,b){return ((a.status.max_st[1]<=b.status.max_st[1])? 1 : -1)}); break;}
 		case 5: {obj.sort(function(a,b){return ((a.status.max_st[2]<=b.status.max_st[2])? 1 : -1)}); break;}
+		case 6: {obj.sort(function(a,b){return (chara_name[a.character].id<chara_name[b.character].id)? -1 : 1}); break;}
 		default:
 	}
 	console.log(obj);

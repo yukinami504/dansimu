@@ -584,7 +584,7 @@ function txt_input()
 }
 function data_input()
 {
-	let mtm_data = mtmdata_3;
+	let mtm_data = mtmdata_2;
 	//console.log(mtm_data);
 	console.log("jsonデータを呼び出しました");
 	
@@ -621,7 +621,8 @@ function txt_output()
 	console.log(mtm_txt);
 	
 	//let output_txt = "let mtmdata=\'" + mtm_txt2 + "'";
-	let output_txt = "let mtmdata_3=" + mtm_txt + ";";
+	let output_txt = "let mtmdata_2=" + mtm_txt + ";";
+	//let output_txt = "let mtmdata=" + mtm_txt + ";";
 	
 	document.getElementById("ta1").value = output_txt;
 	document.getElementById("txt1").innerText = "データを出力しました";
