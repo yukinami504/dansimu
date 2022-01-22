@@ -38,13 +38,13 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<blockquote>
+	(2022.01.23) 楽曲「Against, Perfect Cherry Blossom」を実装しました。<br>
 	(2022.01.23) イベントミタマカードと楽曲「SEE YOU AGAIN!」を実装しました。<br>
 	(2022.01.14) イベントミタマカードと楽曲「Spring of Dreams」を実装しました。<br>
 	(2022.01.10) ヒロインスキルを実装しました（要検証）。<br>
 	(2022.01.10) 現在実装済みのSSR,SRミタマカードを追加しました。<br>
 	(2022.01.04) ミタマカードのフィルタ・ソート機能を追加しました。<br>
 	(2022.01.03) 楽曲「あいつはイカサマをしている」を追加しました。<br>
-	(2022.01.03) 新規のSSRと一部のSRを追加しました。<br>
 	(2021.12.31) 開花ボーナスを8.0%まで拡張しました。
 	</blockquote>
 	</div>
@@ -457,7 +457,7 @@ function calcScore()
 	console.log(diff_num,force,notes_num);
 	let basic_score = (0.334*diff_num+10.806)*force/notes_num;
 	//let basic_score_f = (0.334*diff_num+10.807)*force/notes_num;
-	console.log(basic_score);
+	console.log("基礎点: "+basic_score);
 	//console.log(basic_score_f);
 	
 	let max_i=-1;
@@ -480,6 +480,7 @@ function calcScore()
 	if(m_b_info.cat=="score"){
 	
 		burst_time = m_b_info.num[m_b_level-1][0]*1000;
+		console.log("MB発動時間: "+burst_time);
 		
 		for(let i=0;i<notes_num;i++)
 		{

@@ -66,6 +66,7 @@ const chara_name = {
 }
 
 const music_name = {
+	"Against, Perfect Cherry Blossom" : {"id" : "agnst", "attr" : "ro"},
 	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
 	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
 	"エピクロスの虹はもう見えない" : {"id" : "epkrs", "attr" : "co"},

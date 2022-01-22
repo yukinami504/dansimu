@@ -58,20 +58,23 @@ function parse()
 	
 	let textArray = msg.split('\n');
 	let num = textArray.length;
+	let sentence="";
 	console.log(num);
 	for(let i=0;i<num;i++)
 	{
-		let sentence = textArray[i];
+		sentence += textArray[i];
 		if(sentence[0]=='@')
 		{
 			command = sentence.slice(1).split(' ')[0];
 			sub_command = sentence.slice(1).split(' ')[0];
 			if(command =="Start")input_score = true;
 			else if(command =="End")input_score = false;
+			sentence="";
 		}
 		else 
 		{
-			if(input_score)
+			console.log(i,sentence);
+			if(input_score && sentence.indexOf(',') != -1)
 			{
 				let score_bar = sentence.split(',')[0];
 				let bar_length = score_bar.length;
@@ -94,6 +97,8 @@ function parse()
 				newCell = newRow.insertCell();
 				newText = document.createTextNode(note_num);
 				newCell.appendChild(newText);
+				
+				sentence="";
 			}
 		}
 		
