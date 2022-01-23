@@ -2,13 +2,23 @@ function getMusicData()
 {
 	console.log("getmusic");
 	const keydata = Object.keys(music_name);
-	let select = document.getElementById("ms");
+	let select_all = document.getElementById("ms_all");
+	let select_em = document.getElementById("ms_em");
+	let select_co = document.getElementById("ms_co");
+	let select_ro = document.getElementById("ms_ro");
 	for(let j=0;j<keydata.length;j++)
 	{
 		let option = document.createElement("option");
 		option.text = keydata[j];
 		option.value = music_name[keydata[j]].id;
-		select.appendChild(option);
+		switch(music_name[keydata[j]].attr)
+		{
+			case "all": select_all.appendChild(option); break;
+			case "em": select_em.appendChild(option); break;
+			case "co": select_co.appendChild(option); break;
+			case "ro": select_ro.appendChild(option); break;
+			default :
+		}
 	}
 }
 

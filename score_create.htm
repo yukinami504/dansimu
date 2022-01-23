@@ -21,7 +21,7 @@
 	<textarea name="example" id="ta2" rows="4" cols="40"></textarea>
 	<p id="txt1">読み込んでください</p>
 	<table name="extable" id="tb1">
-		<tr> <td>Bar</td> <td>notes</td> </tr>
+		<tr> <td>Bar</td> <td>Ticks</td> <td>notes</td> </tr>
 	</table>
 	<pre>
 	使い方：
@@ -66,9 +66,14 @@ function parse()
 		if(sentence[0]=='@')
 		{
 			command = sentence.slice(1).split(' ')[0];
-			sub_command = sentence.slice(1).split(' ')[0];
+			subcommand = sentence.slice(1).split(' ')[1];
 			if(command =="Start")input_score = true;
 			else if(command =="End")input_score = false;
+			else if(command =="Bar"){
+				let time_nume = subcommand.split('/')[0];
+				let time_deno = subcommand.split('/')[1];
+				ticks = 1920*parseInt(time_nume)/parseInt(time_deno);
+			}
 			sentence="";
 		}
 		else 
@@ -94,6 +99,11 @@ function parse()
 				let newCell = newRow.insertCell();
 				let newText = document.createTextNode(bar_num);
 				newCell.appendChild(newText);
+				
+				newCell = newRow.insertCell();
+				newText = document.createTextNode(ticks);
+				newCell.appendChild(newText);
+				
 				newCell = newRow.insertCell();
 				newText = document.createTextNode(note_num);
 				newCell.appendChild(newText);

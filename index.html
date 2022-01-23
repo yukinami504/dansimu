@@ -38,6 +38,7 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<blockquote>
+	(2022.01.24) 楽曲「Bad Apple!! feat.nomico」,「Sweets Time」を実装しました。<br>
 	(2022.01.23) 楽曲「Against, Perfect Cherry Blossom」を実装しました。<br>
 	(2022.01.23) イベントミタマカードと楽曲「SEE YOU AGAIN!」を実装しました。<br>
 	(2022.01.14) イベントミタマカードと楽曲「Spring of Dreams」を実装しました。<br>
@@ -52,6 +53,10 @@
 		<p>
 			<select name="music" id="ms" required>
 				<option value="0">楽曲を選択</option>
+				<optgroup label="All" id="ms_all"></optgroup>
+				<optgroup label="Em" id="ms_em"></optgroup>
+				<optgroup label="Co" id="ms_co"></optgroup>
+				<optgroup label="Ro" id="ms_ro"></optgroup>
 				<!--<option value="fof">フォールオブフォール</option>-->
 			</select>
 			難易度 
@@ -431,14 +436,38 @@ function calcScore()
 	
 	//楽譜データからノーツと時間を取り出す
 	let bar_time = 240000/(musicdata.BPM);
+	let bar_time_arr = new Array();
+	let bar_start_time_arr = new Array();//bar_time_arrの累積
+	
+	//まず各小節の時間のみ
+	let change_index=0;
+	let bar_num = notes[notes_num-1].bar;
+	for(let i=0;i<bar_num;i++){
+		if('bar_change' in musicdata){
+			while(!(musicdata.bar_change[change_index].start<=(i+1)&&(i+1)<=musicdata.bar_change[change_index].end))change_index++;
+			let time_nume = musicdata.bar_change[change_index].measure.split('/')[0];
+			let time_deno = musicdata.bar_change[change_index].measure.split('/')[1];
+			bar_time_arr[i] = 240000*parseInt(time_nume)/parseInt(time_deno)/(musicdata.bar_change[change_index].BPM);
+			bar_start_time_arr[i] = ((i==0)?(0):(bar_start_time_arr[i-1]+bar_time_arr[i-1]));
+		}
+		else {
+			let time_nume = musicdata.measure.split('/')[0];
+			let time_deno = musicdata.measure.split('/')[1];
+			bar_time_arr[i] = 240000*parseInt(time_nume)/parseInt(time_deno)/(musicdata.BPM);
+			bar_start_time_arr[i] = ((i==0)?(0):(bar_start_time_arr[i-1]+bar_time_arr[i-1]));
+		}
+		console.log(i,bar_time_arr[i],bar_start_time_arr[i]);
+	}
+	
 	let notes_arr = new Array();
 	for(let i=0;i<notes_num;i++)
 	{
 		//console.log(notes[i]);
 		let obj = {type:"n",combo:0,time:0};
-		let bar_start_time = ((musicdata.offset)+((notes[i].bar-1)*bar_time));//拍子によって1920は変わる
+		//let bar_start_time = ((musicdata.offset)+((notes[i].bar-1)*bar_time));//拍子によって1920は変わる
+		let bar_start_time = ((musicdata.offset)+(bar_start_time_arr[notes[i].bar-1]));
 		
-		if(musicdata.barstart_ms[notes[i].bar-1]!=undefined&&musicdata.barstart_ms[notes[i].bar-1]!=null&&musicdata.barstart_ms[notes[i].bar-1]!=-1)bar_start_time = ((musicdata.offset)+musicdata.barstart_ms[notes[i].bar-1]);
+		if(musicdata.barstart_ms[notes[i].bar-1]!=undefined&&musicdata.barstart_ms[notes[i].bar-1]!=null&&musicdata.barstart_ms[notes[i].bar-1]!=-1)bar_start_time = ((musicdata.offset)+musicdata.barstart_ms[notes[i].bar-1]);//barstart_msがある場合はそちらが優先される
 		
 		//console.log(bar_start_time);
 		//console.log(musicdata.barstart_ms[notes[i].bar-1]);
@@ -573,7 +602,7 @@ function calcScore()
 				//c_time,prob,e_time,e_num
 				
 				//属性一致の際は確率が1.5倍？説
-				if(mitama_members[j].attr==musicdata.attribute)e_prob*=1.5;
+				if(mitama_members[j].attr==musicdata.attribute||musicdata.attribute=="all")e_prob*=1.5;
 				
 				//ヒロインスキルの効果
 				switch(hrn_skill1){
@@ -679,7 +708,7 @@ function calcScore()
 	document.getElementById("text2_mean").innerText = "平均スコア : "+mean_total_score;
 	
 	let bin_size = 10000;
-	let color_name = ["red","cyan","gold","gray"];
+	let color_name = ["red","cyan","gold","darkslateblue"];
 	
 	let trace = {
 		x: total_score_arr,
