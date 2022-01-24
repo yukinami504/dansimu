@@ -67,7 +67,9 @@ const chara_name = {
 
 const music_name = {
 	"Bad Apple!! feat.nomico" : {"id" : "bapple", "attr" : "all"},
+	"チルノのパーフェクトさんすう教室" : {"id" : "cirno", "attr" : "ro"},
 	"Sweets Time" : {"id" : "sweets", "attr" : "ro"},
+	"郷愁のロンド" : {"id" : "rondo", "attr" : "em"},
 	"Against, Perfect Cherry Blossom" : {"id" : "agnst", "attr" : "ro"},
 	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
 	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
