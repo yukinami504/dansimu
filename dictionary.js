@@ -63,6 +63,7 @@ const chara_name = {
 	"寅丸星" : {"id" : 60, "name" : "星"},
 	"ナズーリン" : {"id" : 61, "name" : "ナズ"},
 	"橙" : {"id" : 62, "name" : "橙"},
+	"依神女苑" : {"id" : 63, "name" : "女苑"},
 }
 
 const music_name = {
@@ -77,4 +78,6 @@ const music_name = {
 	"あいつはイカサマをしている" : {"id" : "cheat", "attr" : "co"},
 	"Spring of Dreams" : {"id" : "sod", "attr" : "em"},
 	"SEE YOU AGAIN!" : {"id" : "seeyou", "attr" : "ro"},
+	"Ⓤチルノのパーフェクトさんすう教室 (Ura Kagura)" : {"id" : "cirno_u", "attr" : "ro"},
+	"悪戯センセーション" : {"id" : "itasen", "attr" : "co"},
 }

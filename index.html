@@ -38,15 +38,12 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<blockquote>
-	(2022.01.25) 楽曲「郷愁のロンド」,「チルノのパーフェクトさんすう教室」を追加しました。<br>
-	(2022.01.24) 楽曲「Bad Apple!! feat.nomico」,「Sweets Time」を追加しました。<br>
-	(2022.01.23) 楽曲「Against, Perfect Cherry Blossom」を追加しました。<br>
-	(2022.01.23) イベントミタマカードと楽曲「SEE YOU AGAIN!」を実装しました。<br>
-	(2022.01.14) イベントミタマカードと楽曲「Spring of Dreams」を実装しました。<br>
+	(2022.02.04) ハーフアニバーサリーおめでとうございます！<br>
+	(2022.02.03) イベントミタマカードと楽曲「悪戯センセーション」を実装しました。<br>
+	(2022.02.03) 「チルノのパーフェクトさんすう教室(Ura Kagura)」を実装しました。<br>
+	(2022.02.03) 新カグラエフェクトを実装しました。<br>
 	(2022.01.10) ヒロインスキルを実装しました（要検証）。<br>
-	(2022.01.10) 現在実装済みのSSR,SRミタマカードを追加しました。<br>
 	(2022.01.04) ミタマカードのフィルタ・ソート機能を追加しました。<br>
-	(2022.01.03) 楽曲「あいつはイカサマをしている」を追加しました。<br>
 	(2021.12.31) 開花ボーナスを8.0%まで拡張しました。
 	</blockquote>
 	</div>
@@ -578,7 +575,13 @@ function calcScore()
 	//console.log(mitama_eff_lvl);
 	//3つの属性を編成しているか
 	let if_allattr = (mitama_attr.includes(0)&&mitama_attr.includes(1)&&mitama_attr.includes(2));
-	console.log(if_allattr);
+	let if_onlyem = (mitama_attr[0]==0&&mitama_attr[1]==0&&mitama_attr[2]==0&&mitama_attr[3]==0&&mitama_attr[4]==0);
+	let if_onlyco = (mitama_attr[0]==1&&mitama_attr[1]==1&&mitama_attr[2]==1&&mitama_attr[3]==1&&mitama_attr[4]==1);
+	let if_onlyro = (mitama_attr[0]==2&&mitama_attr[1]==2&&mitama_attr[2]==2&&mitama_attr[3]==2&&mitama_attr[4]==2);
+	console.log("3つの属性を編成",if_allattr);
+	console.log("Em属性のみ編成",if_onlyem);
+	console.log("Co属性のみ編成",if_onlyco);
+	console.log("Ro属性のみ編成",if_onlyro);
 	
 	let last_time = notes_arr[notes_num-1].time;
 	//n回繰り返す
@@ -593,13 +596,21 @@ function calcScore()
 		let obj = {type:"e",num:0,time:0};
 		for(let j=0;j<5;j++)
 		{
-			if(mitama_members[j].status.effect.cat=="score")
+			if(mitama_members[j].status.effect.cat.substr(0,5)=="score")
 			{
 				let mtm_eff = mitama_members[j].status.effect.num[mitama_eff_lvl[j]-1];
 				let c_time = mtm_eff[0]*1000; //クールタイム
 				let e_prob = mtm_eff[1]; //確率
 				let e_time = mtm_eff[2]*1000; //発動時間
 				let e_num =  mtm_eff[3]; //上昇度合
+				if(mitama_members[j].status.effect.cat=="score_ex")
+				{//Ura Kagura用ミタマ
+					if(mitama_members[j].status.effect.stage.includes(musicdata.musicID))e_num+=mtm_eff[4];
+				}
+				else if(mitama_members[j].status.effect.cat=="score_co")
+				{
+					if(if_onlyco)e_num+=mtm_eff[4];
+				}
 				//c_time,prob,e_time,e_num
 				
 				//属性一致の際は確率が1.5倍？説

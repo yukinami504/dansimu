@@ -112,8 +112,8 @@ function mtmSort()
 		return flag;
 	}).filter(function(item){
 		let flag = false;
-		if(document.dataForm.fl_score.checked && item.status.effect.cat=="score")flag=true;
-		if(document.dataForm.fl_other.checked && item.status.effect.cat!="score")flag=true;
+		if(document.dataForm.fl_score.checked && item.status.effect.cat.substr(0,5)=="score")flag=true;
+		if(document.dataForm.fl_other.checked && item.status.effect.cat.substr(0,5)!="score")flag=true;
 		return flag;
 	});
 	//ソート（第二優先から逆に行う）
