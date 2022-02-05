@@ -607,9 +607,14 @@ function calcScore()
 				{//Ura Kagura用ミタマ
 					if(mitama_members[j].status.effect.stage.includes(musicdata.musicID))e_num+=mtm_eff[4];
 				}
-				else if(mitama_members[j].status.effect.cat=="score_co")
-				{
+				else if(mitama_members[j].status.effect.cat=="score_co"){
 					if(if_onlyco)e_num+=mtm_eff[4];
+				}
+				else if(mitama_members[j].status.effect.cat=="score_em"){
+					if(if_onlyem)e_num+=mtm_eff[4];
+				}
+				else if(mitama_members[j].status.effect.cat=="score_all"){
+					if(if_allattr)e_num+=mtm_eff[4];
 				}
 				//c_time,prob,e_time,e_num
 				
