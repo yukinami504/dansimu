@@ -38,6 +38,7 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<blockquote>
+	(2022.02.06) 新規ミタマカードと楽曲「ハルトマンの妖怪少女」を実装しました。<br>
 	(2022.02.04) ハーフアニバーサリーおめでとうございます！<br>
 	(2022.02.03) イベントミタマカードと楽曲「悪戯センセーション」を実装しました。<br>
 	(2022.02.03) 「チルノのパーフェクトさんすう教室(Ura Kagura)」を実装しました。<br>
@@ -431,6 +432,8 @@ function calcScore()
 	let diff_num = musicdata.difficulty[diff_index];
 	let notes_num = musicdata.notes[diff_index];
 	let notes = scoredata[diff_index];
+	
+	if(notes.length==0){alert("ごめんなさい！その譜面はまだ準備中です"); return;}
 	
 	//楽譜データからノーツと時間を取り出す
 	let bar_time = 240000/(musicdata.BPM);

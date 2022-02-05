@@ -80,4 +80,5 @@ const music_name = {
 	"SEE YOU AGAIN!" : {"id" : "seeyou", "attr" : "ro"},
 	"Ⓤチルノのパーフェクトさんすう教室 (Ura Kagura)" : {"id" : "cirno_u", "attr" : "ro"},
 	"悪戯センセーション" : {"id" : "itasen", "attr" : "co"},
+	"ハルトマンの妖怪少女" : {"id" : "hrtmn", "attr" : "all"},
 }
