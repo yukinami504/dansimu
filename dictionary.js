@@ -64,6 +64,7 @@ const chara_name = {
 	"ナズーリン" : {"id" : 61, "name" : "ナズ"},
 	"橙" : {"id" : 62, "name" : "橙"},
 	"依神女苑" : {"id" : 63, "name" : "女苑"},
+	"茨木華扇" : {"id" : 64, "name" : "華扇"},
 }
 
 const music_name = {
@@ -73,12 +74,13 @@ const music_name = {
 	"郷愁のロンド" : {"id" : "rondo", "attr" : "em"},
 	"Against, Perfect Cherry Blossom" : {"id" : "agnst", "attr" : "ro"},
 	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
+	"神霊廟秋祭りっ！" : {"id" : "sinrei", "attr" : "em"},
 	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
 	"エピクロスの虹はもう見えない" : {"id" : "epkrs", "attr" : "co"},
 	"あいつはイカサマをしている" : {"id" : "cheat", "attr" : "co"},
 	"Spring of Dreams" : {"id" : "sod", "attr" : "em"},
 	"SEE YOU AGAIN!" : {"id" : "seeyou", "attr" : "ro"},
-	"Ⓤチルノのパーフェクトさんすう教室 (Ura Kagura)" : {"id" : "cirno_u", "attr" : "ro"},
+	"Ⓤチルノのパーフェクトさんすう教室" : {"id" : "cirno_u", "attr" : "ro"},
 	"悪戯センセーション" : {"id" : "itasen", "attr" : "co"},
 	"ハルトマンの妖怪少女" : {"id" : "hrtmn", "attr" : "all"},
 }

@@ -1,0 +1,19 @@
+@Title タイトル
+@BPM 150
+@Bar 4/4
+@Offset -17
+
+@Start Extra
+0000000000000001,
+0000000200000000,
+10201111,
+
+
+
+@End Extra
+
+
+@Start Lunatic
+0,
+
+@End Lunatic

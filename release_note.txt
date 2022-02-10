@@ -33,4 +33,20 @@ AB以外のスコア状況
 ・score_create
 
 
+実装予定曲リスト
+
+・レザマリでもつらくないっ！
+・絡繰りドール
+・あうんどばいみー
+・紅星ミゼラブル～廃憶編
+・drizzly rain
+・響宴
+・Starlight Dance Floor
+・月に叢雲花に風
+・解けないように
+・Lotus Love
+
+
+
+
 
