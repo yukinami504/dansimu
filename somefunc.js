@@ -90,9 +90,15 @@ function random_judge(threshold=100)//threshold(%)の確率でtrueを返す
 	return (ran*100 < threshold);
 }
 
-function visText()
+function visText(id)
 {
-	document.getElementById("text1").style.display = "block";
+	console.log("vis "+id);
+	document.getElementById(id).style.display = "block";
+}
+function delText(id)
+{
+	console.log("del "+id);
+	document.getElementById(id).style.display = "none";
 }
 
 function mtmSort()

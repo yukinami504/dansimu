@@ -38,11 +38,11 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<p class="col-0">
+	(2022.02.18) 楽曲「絡繰りドール」「あうんどばいみー」を実装しました。<br>
+	(2022.02.16) 新規ミタマカードと楽曲「レザマリでもつらくないっ！」を実装しました。<br>
 	(2022.02.11) 新規ミタマカードと楽曲「神霊廟秋祭りっ！」を実装しました。<br>
 	(2022.02.06) 新規ミタマカードと楽曲「ハルトマンの妖怪少女」を実装しました。<br>
 	(2022.02.04) ハーフアニバーサリーおめでとうございます！<br>
-	(2022.02.03) イベントミタマカードと楽曲「悪戯センセーション」を実装しました。<br>
-	(2022.02.03) 「チルノのパーフェクトさんすう教室(Ura Kagura)」を実装しました。<br>
 	(2022.02.03) 新カグラエフェクトを実装しました。<br>
 	(2022.01.10) ヒロインスキルを実装しました（要検証）。<br>
 	(2022.01.04) ミタマカードのフィルタ・ソート機能を追加しました。<br>
@@ -182,9 +182,14 @@
 				<option value="100">100</option>
 				<option value="1000" selected>1000</option>
 				<option value="10000">10000</option>
+			</select><br>
+			ミタマバースト発動位置 <select name="mb_pos" id="sm2">
+				<option value="0">なし</option>
+				<option value="4">最適</option>
 			</select>
 			<button type="button"  class="btn-big btn-a" onclick="calcScore()">推定スコア算出</button>
 		</p>
+		<p id="text0" class="text-hidden">少女神楽中...</p>
 		<p id="text1" class="text-hidden">ミタマバースト発動タイミング ： </p>
 	</div>
 	<div id="score2">
@@ -435,6 +440,7 @@ function calcScore()
 	let notes = scoredata[diff_index];
 	
 	if(notes.length==0){alert("ごめんなさい！その譜面はまだ準備中です"); return;}
+	visText("text0");
 	
 	//楽譜データからノーツと時間を取り出す
 	let bar_time = 240000/(musicdata.BPM);
@@ -542,7 +548,8 @@ function calcScore()
 	else {
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： ミタマバーストがスコアアップ系じゃないよ！";
 	}
-	if(document.getElementById("cb1").checked==true)visText();
+	if(document.getElementById("cb1").checked==true&&formElms.mb_pos.value==4)visText("text1");
+	else delText("text1");
 
 	
 	//スコア推定
@@ -591,6 +598,7 @@ function calcScore()
 	//n回繰り返す
 	let total_score_arr = [];
 	let n = formElms.simunum.value;
+	let p = formElms.mb_pos.value;
 	for(let i=0;i<n;i++)
 	{
 		//まずスコアボーナスを生成する
@@ -663,7 +671,7 @@ function calcScore()
 		
 		//ミタマバーストも入れる
 		
-		if(m_b_info.cat=="score")
+		if(m_b_info.cat=="score"&&p!=0)
 		{
 			let m_b_num = m_b_info.num[m_b_level-1][1];
 			
@@ -753,6 +761,8 @@ function calcScore()
 		yaxis: {title: "Count"}
 	};
 	Plotly.newPlot("stage",data,layout);
+	
+	delText("text0");
 	
 }
 </script>
