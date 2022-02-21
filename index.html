@@ -38,6 +38,7 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<p class="col-0">
+	(2022.02.21) 楽曲を11曲実装しました。<br>
 	(2022.02.18) 楽曲「絡繰りドール」「あうんどばいみー」を実装しました。<br>
 	(2022.02.16) 新規ミタマカードと楽曲「レザマリでもつらくないっ！」を実装しました。<br>
 	(2022.02.11) 新規ミタマカードと楽曲「神霊廟秋祭りっ！」を実装しました。<br>
@@ -175,7 +176,7 @@
 	<div id="score1">
 		<p>
 			総戦力 <input type="text" id="tb1" value="5000" maxlength="7"><br>
-			<input type="checkbox" id="cb1" name="mb_vis">ミタマバースト発動タイミングを表示<br>
+			<!--<input type="checkbox" id="cb1" name="mb_vis">ミタマバースト発動タイミングを表示<br>-->
 			シミュレーション回数 <select name="simunum" id="sm1">
 				<option value="1">1</option>
 				<option value="10">10</option>
@@ -548,7 +549,7 @@ function calcScore()
 	else {
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： ミタマバーストがスコアアップ系じゃないよ！";
 	}
-	if(document.getElementById("cb1").checked==true&&formElms.mb_pos.value==4)visText("text1");
+	if(formElms.mb_pos.value==4)visText("text1");
 	else delText("text1");
 
 	
