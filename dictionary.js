@@ -69,6 +69,8 @@ const chara_name = {
 }
 
 const music_name = {
+	"幻想に咲いた花" : {"id" : "theme1", "attr" : "all"},
+	"幽霊楽団　～ Phantom Ensemble" : {"id" : "yurei", "attr" : "all"},
 	"Bad Apple!! feat.nomico" : {"id" : "bapple", "attr" : "all"},
 	"チルノのパーフェクトさんすう教室" : {"id" : "cirno", "attr" : "ro"},
 	"Sweets Time" : {"id" : "sweets", "attr" : "ro"},
@@ -83,12 +85,14 @@ const music_name = {
 	"Paranoia" : {"id" : "parano", "attr" : "co"},
 	"drizzly rain" : {"id" : "drizz", "attr" : "ro"},
 	"Lotus Love" : {"id" : "lotus", "attr" : "em"},
+	"flanticnight" : {"id" : "flntic", "attr" : "em"},
 	"フォールオブフォール" : {"id" : "fof", "attr" : "ro"},
 	"神霊廟秋祭りっ！" : {"id" : "sinrei", "attr" : "em"},
 	"響縁" : {"id" : "kyoen", "attr" : "ro"},
 	"PanneDemonology" : {"id" : "panne", "attr" : "em"},
 	"Christmas Bomb!!" : {"id" : "chrisb", "attr" : "co"},
 	"エピクロスの虹はもう見えない" : {"id" : "epkrs", "attr" : "co"},
+	"23145EASONS" : {"id" : "epkrs", "23145" : "em"},
 	"あうんどばいみー" : {"id" : "aund", "attr" : "ro"},
 	"あいつはイカサマをしている" : {"id" : "cheat", "attr" : "co"},
 	"Spring of Dreams" : {"id" : "sod", "attr" : "em"},
@@ -99,4 +103,5 @@ const music_name = {
 	"解けないように" : {"id" : "hodoke", "attr" : "all"},
 	"ハルトマンの妖怪少女" : {"id" : "hrtmn", "attr" : "all"},
 	"ⓊScream out!" : {"id" : "scream_u", "attr" : "co"},
+	"Ilias" : {"id" : "ilias", "attr" : "co"},
 }
