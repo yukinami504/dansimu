@@ -30,6 +30,12 @@ header .headline{
 .text-bold {
 	font-weight: bold;
 }
+.slc-list {
+	width: 80px;
+}
+.slc-list-b {
+	width: 500px;
+}
 
 blockquote {
 	font-size: 100%;

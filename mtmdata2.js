@@ -6461,6 +6461,63 @@ let mtmdata_2=[
     }
   },
   {
+    "id": 2107,
+    "name": "早苗のきらめきバレンタイン☆",
+    "rare": "sr",
+    "character": "東風谷早苗",
+    "attr": "ro",
+    "release_date": "2022/02/22",
+    "status": {
+      "max_st": [
+        2806,
+        2362,
+        5888
+      ],
+      "min_st": [
+        645,
+        499,
+        1663
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "invinc",
+        "num": [
+          [
+            7,
+            43,
+            3.5
+          ],
+          [
+            7,
+            53,
+            4.9
+          ],
+          [
+            7,
+            63,
+            6.3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "piece",
+        "num": [
+          15,
+          17,
+          20
+        ]
+      }
+    }
+  },
+  {
     "id": 0,
     "name": null,
     "rare": null,
