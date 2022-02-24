@@ -40,6 +40,7 @@
 	</div>
 	<div id="rel_nt" style="display:none;clear:both;">
 	<p class="col-0">
+	(2022.02.25) 楽曲を10曲実装しました。<br>
 	(2022.02.23) チーム編成の入出力機能を追加しました。<br>
 	(2022.02.23) 楽曲を3曲実装しました。<br>
 	(2022.02.21) 楽曲を11曲実装しました。<br>
@@ -233,7 +234,6 @@
 
 const input = document.getElementById('file');
 let reader = new FileReader();
-const ms_list = document.getElementById('ms');
 
 //window.addEventListener('load',getMtmData,false);
 window.addEventListener('load',() => {
@@ -258,7 +258,7 @@ input.addEventListener('change', () => {
 	}
 	
 });*/
-
+/*
 var clickEventType = (( window.ontouchstart!==null ) ? 'click':'touchend');//スマホか否か
 ms_list.addEventListener(clickEventType, () => {
     //alert('event');
@@ -266,6 +266,14 @@ ms_list.addEventListener(clickEventType, () => {
     console.log(ms_list.value);
 	getScoreData(ms_list.value);
 	
+});*/
+
+const ms_list = document.getElementById('ms');
+ms_list.addEventListener('change', () => {
+    //alert('event');
+    console.log('event');
+    console.log(ms_list.value);
+	getScoreData(ms_list.value);
 });
 
 const hrnlv1_list = document.getElementById("lv1");

@@ -6518,6 +6518,81 @@ let mtmdata_2=[
     }
   },
   {
+    "id": 2108,
+    "name": "Paranoia",
+    "rare": "sr",
+    "character": "古明地こいし",
+    "attr": "co",
+    "release_date": "2022/02/24",
+    "status": {
+      "max_st": [
+        1617,
+        5866,
+        1835
+      ],
+      "min_st": [
+        253,
+        1655,
+        325
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score_ex",
+        "stage": [
+          "parano_u"
+        ],
+        "num": [
+          [
+            4,
+            47,
+            2,
+            15,
+            3
+          ],
+          [
+            4,
+            57,
+            2.9,
+            18,
+            7
+          ],
+          [
+            4,
+            67,
+            3.8,
+            20,
+            30
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "time",
+        "num": [
+          12,
+          13,
+          14
+        ]
+      }
+    }
+  },
+  {
     "id": 0,
     "name": null,
     "rare": null,
