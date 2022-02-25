@@ -21,6 +21,10 @@ header .headline{
   margin: 0 20px;
 }
 
+body {
+	line-height: 1.4em;
+}
+
 .ms{
 	cursor: pointer;
 }
@@ -30,15 +34,20 @@ header .headline{
 .text-bold {
 	font-weight: bold;
 }
-.slc-list {
-	width: 80px;
-}
-.slc-list-b {
-	width: 500px;
-}
 
-@media screen and (min-width: 768px){
-.br-sp {display: none; }
+@media screen and (max-width: 600px){ /*600px以下の場合*/
+	.slc-list-b {
+		width: 300px;
+	}
+}
+@media screen and (min-width: 768px){ /*768px以上の場合*/
+	.br-sp {display: none; }
+	.slc-list {
+		width: 80px;
+	}
+	.slc-list-b {
+		width: 500px;
+	}
 }
 
 blockquote {
@@ -84,7 +93,11 @@ ul li, ol li {
 	padding: 0px 0px 0px 10px;
 	background-color: #eee;
 	color: #000;
-	font-size: medium;
+	font-size: 90%;
+}
+
+span {
+	display:inline-block;
 }
 .info-title {
 	padding: 0;
@@ -148,4 +161,7 @@ th, td {
 .text-right {
   text-align: right;
   width: 80px;
+}
+.text-small {
+  font-size: 7px;
 }
