@@ -484,6 +484,7 @@ function calcScore()
 		mean_total_score+=total_score_arr[i];
 	}
 	mean_total_score/=(total_score_arr.length);
+	mean_total_score　=Math.round(mean_total_score);
 	document.getElementById("text2_max").innerText = "最大スコア : "+max_total_score;
 	document.getElementById("text2_min").innerText = "最小スコア : "+min_total_score;
 	document.getElementById("text2_mean").innerText = "平均スコア : "+mean_total_score;

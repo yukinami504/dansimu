@@ -77,9 +77,24 @@ ul li, ol li {
 	font-weight: bold;
 }
 .col-0 {
-	padding: 0px 0px 0px 20px;
+	padding: 0px 0px 0px 10px;
 	background-color: #eee;
-	color: #a0a;
+	color: #000;
+	font-size: medium;
+}
+.info-title {
+	padding: 0;
+	font-size: 110%;
+	background-color: #eee;
+	font-weight: bold;
+}
+.btn-pre {
+	color: #fff;
+	background: #d94887;
+	border: solid;
+	border-width: 1px;
+	border-color: #000;
+	border-radius: 0.5rem;
 }
 .btn-norm {
 	font-size: 1.1rem;

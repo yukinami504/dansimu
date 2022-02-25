@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ダンカグのシミュレータ</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="dictionary.js"></script>
@@ -21,7 +21,7 @@
 <body>
   <header>
 	<h2 class="headline">
-      <span>ダンカグのシミュレータ(α版)</span>
+      <span>ダンカグのシミュレータ(β版)</span>
     </h2>
 	<!--<ul class="nav-list">
       <li class="nav-list-item">Home</li>
@@ -38,22 +38,43 @@
 	<div class="open-window" id="releasenote" onclick="obj=document.getElementById('rel_nt').style; obj.display=(obj.display=='none')?'block':'none';">
 	<a style="cursor:pointer;">▼ <span class="text-bold">お知らせ</span>（クリックで開閉）</a>
 	</div>
-	<div id="rel_nt" style="display:none;clear:both;">
-	<p class="col-0">
-	(2022.02.25) 楽曲を10曲実装しました。<br>
-	(2022.02.23) チーム編成の入出力機能を追加しました。<br>
-	(2022.02.23) 楽曲を3曲実装しました。<br>
-	(2022.02.21) 楽曲を11曲実装しました。<br>
-	(2022.02.18) 楽曲「絡繰りドール」「あうんどばいみー」を実装しました。<br>
-	(2022.02.16) 新規ミタマカードと楽曲「レザマリでもつらくないっ！」を実装しました。<br>
-	(2022.02.11) 新規ミタマカードと楽曲「神霊廟秋祭りっ！」を実装しました。<br>
-	(2022.02.06) 新規ミタマカードと楽曲「ハルトマンの妖怪少女」を実装しました。<br>
-	(2022.02.04) ハーフアニバーサリーおめでとうございます！<br>
-	(2022.02.03) 新カグラエフェクトを実装しました。<br>
-	(2022.01.10) ヒロインスキルを実装しました（要検証）。<br>
-	(2022.01.04) ミタマカードのフィルタ・ソート機能を追加しました。<br>
-	(2021.12.31) 開花ボーナスを8.0%まで拡張しました。
-	</p>
+	<div class="col-0" id="rel_nt" style="display:none;clear:both;">
+	<p class="info-title">■これは何？</p>
+	<b>スマホ用リズムゲーム「東方ダンマクカグラ」の期待値シミュレータです。<br>
+	入力された編成からカグラをシミュレーションし、スコアの分布をヒストグラムで表します。</b>
+	<p class="info-title">■使い方</p>
+	<b>1.曲と難易度を選択</b><br>
+	　曲を選ぶことで譜面データが読み込まれます。<br>
+	　<b>※一部の曲、譜面は今後実装予定です。</b><br>
+	<b>2.各情報を入力</b><br>
+	　ヒロインとミタマカードの情報を入力します。<br>
+	<b>3.総戦力計算</b><br>
+	　<span class="btn-pre">戦力計算</span>を押すと総戦力が計算されます。<br>
+	<b>4.シミュレーション</b><br>
+	　総戦力にずれがある場合はテキストボックス内の値を変更してください。<br>
+	　シミュレーション回数を選択し、<span class="btn-pre">推定スコア算出</span>を押すことでシミュレーションが行われます。<br>
+	　ミタマバースト発動を最適にした場合、最適なタイミングを事前に計算します。<br>
+	<p class="info-title">■Q&A</p>
+	Q.<b>シミュレーションしたい曲、譜面がありません。</b><br>
+	A.申し訳ございません。現在リストに存在しない曲、譜面は順次実装予定です。(1日に3譜面程度)<br>
+	　曲が存在する場合、Lunatic譜面は必ず存在しますが、Extra以下はないものが多いです。<br>
+	Q.<b>ヒストグラムが表示されません。</b><br>
+	A.申し訳ございません。たまにヒストグラムを表示するAPIが読み込まれないことがございます。<br>
+	　ページを再読み込みすることで改善される可能性があります。<br>
+	Q.<b>候補のミタマカードが多すぎて、選ぶのが面倒です。</b><br>
+	A.ミタマカードの「フィルタ設定」を活用することで、ミタマカードの候補を減らし、選びやすくします。<br>
+	　また、「ソート設定」によって、フィルタ設定によって減らしたミタマカードの候補を並び替えます。<br>
+	Q.<b>ヒロイン・ミタマカードの編成をいちいち選ぶのが面倒です。</b><br>
+	A.よく使う編成は、「チーム編成の入出力」によって文字列で保存可能です。<br><br>
+	その他、ご意見・ご要望がありましたら<a href="https://twitter.com/yuki_nami403">@yuki_nami403</a>までご連絡ください。<br>
+	<p class="info-title">■更新履歴</p>
+	(2022.02.25) β版をリリースしました。<br>
+	(2022.11.28) α版をリリースしました。
+	<p class="info-title">■スペシャルサンクス</p>
+	東方ダンマクカグラ　公式サイト　様<br>
+	東方ダンマクカグラ有志攻略Wiki　様<br>
+	ダンカグ譜面メモ　様<br>
+	ふろいはいむ　様<br>
 	</div>
 	<h3>曲選択</h3>
 		<p>
@@ -205,9 +226,9 @@
 				<option value="1000" selected>1000</option>
 				<option value="10000">10000</option>
 			</select><br>
-			ミタマバースト発動位置 <select name="mb_pos" id="sm2">
+			ミタマバースト発動　 <select name="mb_pos" id="sm2">
 				<option value="0">なし</option>
-				<option value="4">最適</option>
+				<option value="4" selected>最適</option>
 			</select>
 			<button type="button"  class="btn-big btn-a" onclick="calcScore()">推定スコア算出</button>
 		</p>
@@ -221,10 +242,11 @@
 	</div>
 	<div id="stage"></div><!-- plotly.jsのキャンバス -->
   </form>
+  <hr>
   <footer>
     <div class="container">
       <p>願わくは 花の下にて 春死なむ その如月の 望月のころ</p>
-      <p>(c) 2021 yukinami</p>
+      <p>(c) 2021-2022 yukinami</p>
     </div>
   </footer>
 </body>
