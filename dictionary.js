@@ -117,4 +117,5 @@ const music_name = {
 	"ⓊScream out!" : {"id" : "scream_u", "attr" : "co"},
 	"Ilias" : {"id" : "ilias", "attr" : "co"},
 	"Rainy, rainy days" : {"id" : "rainy", "attr" : "em"},
+	"ⓊParanoia" : {"id" : "parano_u", "attr" : "co"},
 }
