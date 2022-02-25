@@ -37,6 +37,10 @@ header .headline{
 	width: 500px;
 }
 
+@media screen and (min-width: 768px){
+.br-sp {display: none; }
+}
+
 blockquote {
 	font-size: 100%;
 	background-color: #eee;
