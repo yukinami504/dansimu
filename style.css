@@ -63,6 +63,7 @@ ul, ol {
 
 .open-window {
 	margin-top: 5px;
+	font-size: 110%;
 	background-color: #eee;
 }
 ul li, ol li {
