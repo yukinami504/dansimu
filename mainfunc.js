@@ -506,9 +506,11 @@ function calcScore()
 		}
 	};
 	let data = [trace];
+	let screenwidth=(document.body.clientWidth<640)?(document.body.clientWidth):(640)
+	let screenheight=Math.floor(screenwidth*3/4);
 	let layout = {
-		height : 480,
-		width : 640,
+		height : screenheight,
+		width : screenwidth,
 		bargroupgap: 0.05,
 		xaxis: {title: "Score"}, 
 		yaxis: {title: "Count"}

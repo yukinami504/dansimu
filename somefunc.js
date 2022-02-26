@@ -77,7 +77,7 @@ function updateTable(a1=10,a2=0,b=0,c=0,d=0)
 {
 	force_tbl.rows[0].cells[1].innerText = a1;
 	force_tbl.rows[1].cells[1].innerText = a2;
-	force_tbl.rows[2].cells[1].innerText = b;
+	force_tbl.rows[2].cells[1].innerText = '-';
 	force_tbl.rows[3].cells[1].innerText = c;
 	force_tbl.rows[4].cells[1].innerText = d;
 	force_tbl.rows[5].cells[1].innerText = (a1+a2+c+d);
