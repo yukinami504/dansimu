@@ -37,25 +37,36 @@ AB以外のスコア状況
 動画が録られ、オフセットと譜面の確認が可能なもののみ記録してください。
 
 ・レイセンオカルティア(1)
-・下克上々(1)
-・トランスダンスアナーキー(0)
-・LOVE EAST(0)
-
+・The Karasu Wind(0)
+・ウサテイ20XX(1+3/4)
 
 
 未実装譜面リスト
-現在All5Em14Co14Ro13
+現在All5Em15Co15Ro15
 
 
-・明星ロケット
 
-・嘘と慟哭
-・儚きもの人間
+・嘘と慟哭(liar)(0)
+・儚きもの人間(hknkmn)(0)
 
-・断罪は遍く人間の元に
-・Poker Face
-・紅星ミゼラブル～廃憶編
+・断罪は遍く人間の元に(danzai)
+・Poker Face(poker)(1)
+・紅星ミゼラブル～廃憶編(kousei)
 
+・待チ人ハ来ズ。(mtbt)(0)
+・SAMURAI GHOST GIRL, KILL! KILL!(smrigg)(0)
+・Help me, ERINNNNNN!!(erin)
+
+・far away(far)(1)
+・聖徳伝説　～ True Administrator（深秘録Version）(syoutk)
+・巡るHarvest(harves)
+・Unprivileged Access(unpriv)
+・White Lotus...(whitel)
+・キング・オブ・ザ・説教(sekkyo)
+・
+・
+・
+・
 
 
 
