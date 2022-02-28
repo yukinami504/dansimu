@@ -377,6 +377,9 @@ function calcScore()
 				else if(mitama_members[j].status.effect.cat=="score_em"){
 					if(if_onlyem)e_num+=mtm_eff[4];
 				}
+				else if(mitama_members[j].status.effect.cat=="score_ro"){
+					if(if_onlyro)e_num+=mtm_eff[4];
+				}
 				else if(mitama_members[j].status.effect.cat=="score_all"){
 					if(if_allattr)e_num+=mtm_eff[4];
 				}

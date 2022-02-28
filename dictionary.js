@@ -66,6 +66,7 @@ const chara_name = {
 	"依神女苑" : {"id" : 63, "name" : "女苑"},
 	"茨木華扇" : {"id" : 64, "name" : "華扇"},
 	"水橋パルスィ" : {"id" : 65, "name" : "パルスィ"},
+	"鍵山雛" : {"id" : 66, "name" : "雛"},
 }
 
 const music_name = {
@@ -118,4 +119,5 @@ const music_name = {
 	"Ilias" : {"id" : "ilias", "attr" : "co"},
 	"Rainy, rainy days" : {"id" : "rainy", "attr" : "em"},
 	"ⓊParanoia" : {"id" : "parano_u", "attr" : "co"},
+	"LOVE EAST" : {"id" : "lveast", "attr" : "ro"},
 }
