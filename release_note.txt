@@ -49,7 +49,7 @@ AB以外のスコア状況
 ・嘘と慟哭(liar)(0)
 ・儚きもの人間(hknkmn)(0)
 
-・断罪は遍く人間の元に(danzai)
+・断罪は遍く人間の元に(danzai)(1)
 ・Poker Face(poker)(1)
 ・紅星ミゼラブル～廃憶編(kousei)
 
@@ -62,7 +62,7 @@ AB以外のスコア状況
 ・巡るHarvest(harves)
 ・Unprivileged Access(unpriv)
 ・White Lotus...(whitel)
-・キング・オブ・ザ・説教(sekkyo)
+・キング・オブ・ザ・説教(sekkyo)(0)
 ・
 ・
 ・
