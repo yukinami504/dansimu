@@ -10,7 +10,6 @@ var musicdata =
 	"barstart_ms" : [null],
 	"bar_change" : [
 		{"start":1,"end":9,"BPM":133,"measure":"4/4"},
-		
 		{"start":10,"end":82,"BPM":158,"measure":"4/4"}
 	],
 	"difficulty" : [6,12,17,23,25],

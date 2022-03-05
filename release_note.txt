@@ -39,13 +39,10 @@ AB以外のスコア状況
 
 
 未実装譜面リスト
-現在All5Em18Co18Ro18
+現在All5Em19Co20Ro19
 
 
-・断罪は遍く人間の元に(danzai)(1)
-・Poker Face(poker)(1)
-・SAMURAI GHOST GIRL, KILL! KILL!(smrigg)(0)
-・巡るHarvest(harvst)(1)
+・マリオネットメトロポリス(0)
 
 ・White Lotus...(whitel)
 ・聖徳伝説　～ True Administrator（深秘録Version）(syoutk)
