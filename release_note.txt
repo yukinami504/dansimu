@@ -39,17 +39,15 @@ AB以外のスコア状況
 
 
 未実装譜面リスト
-現在All5Em19Co20Ro19
+現在All5Em20Co20Ro20
 
 
-・マリオネットメトロポリス(0)
-
-・White Lotus...(whitel)
-・聖徳伝説　～ True Administrator（深秘録Version）(syoutk)
+・White Lotus...(white)(0)
+・聖徳伝説　～ True Administrator（深秘録Version）(syoutk)(1)
 ・far away(far)(1)
 
 ・紅星ミゼラブル～廃憶編(kousei)
-・Unprivileged Access(unpriv)
+・Unprivileged Access(unpriv)(3)
 ・キング・オブ・ザ・説教(sekkyo)(0)
 ・
 ・
