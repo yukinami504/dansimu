@@ -135,4 +135,5 @@ const music_name = {
 	"ⓊParanoia" : {"id" : "parano_u", "attr" : "co"},
 	"LOVE EAST" : {"id" : "lveast", "attr" : "ro"},
 	"マリオネットメトロポリス" : {"id" : "marion", "attr" : "ro"},
+	"Ⓤ明星ロケット" : {"id" : "akbs_u", "attr" : "em"},
 }
