@@ -67,6 +67,7 @@ const chara_name = {
 	"茨木華扇" : {"id" : 64, "name" : "華扇"},
 	"水橋パルスィ" : {"id" : 65, "name" : "パルスィ"},
 	"鍵山雛" : {"id" : 66, "name" : "雛"},
+	"リリーホワイト" : {"id" : 67, "name" : "リリー"},
 }
 
 const music_name = {
@@ -139,4 +140,5 @@ const music_name = {
 	"LOVE EAST" : {"id" : "lveast", "attr" : "ro"},
 	"マリオネットメトロポリス" : {"id" : "marion", "attr" : "ro"},
 	"Ⓤ明星ロケット" : {"id" : "akbs_u", "attr" : "em"},
+	"さようなら。ありがとう。" : {"id" : "bye", "attr" : "co"},
 }
