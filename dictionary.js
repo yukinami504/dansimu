@@ -141,4 +141,5 @@ const music_name = {
 	"マリオネットメトロポリス" : {"id" : "marion", "attr" : "ro"},
 	"Ⓤ明星ロケット" : {"id" : "akbs_u", "attr" : "em"},
 	"さようなら。ありがとう。" : {"id" : "bye", "attr" : "co"},
+	"地の色は黄色" : {"id" : "yellow", "attr" : "all"},
 }
