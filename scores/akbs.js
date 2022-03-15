@@ -5,7 +5,7 @@ var musicdata =
 	"type" : "normal",
 	"attribute" : "em",
 	"measure" : "4/4",
-	"BPM" : 163,
+	"BPM" : 168,
 	"offset" : 0, //楽曲開始時から1小節目までの時間(ms)18.17-23.07 -23
 	"barstart_ms" : [null],
 	"difficulty" : [8,13,18,23,26],
