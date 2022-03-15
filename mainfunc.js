@@ -432,11 +432,11 @@ function calcScore()
 		{
 			let m_b_num = m_b_info.num[m_b_level-1][1];
 			
-			let obj3 = {type:"e", num:m_b_num, time:max_burst_time};
+			let obj3 = {type:"e", num:m_b_num, time:(max_burst_time-1)};
 			scoreup_events_arr[s_e_arr_length] = obj3;
 			s_e_arr_length++;
 			
-			let obj4 = {type:"e", num:(-(m_b_num)), time:(max_burst_time+burst_time)};
+			let obj4 = {type:"e", num:(-(m_b_num)), time:(max_burst_time-1+burst_time)};
 			scoreup_events_arr[s_e_arr_length] = obj4;
 			s_e_arr_length++;
 		}
@@ -470,13 +470,14 @@ function calcScore()
 				
 				note_score = Math.floor(note_score);//小数点以下切り捨て
 				note_score = Math.floor(note_score*((100+skill_mag)/100));
-				if(i==0)console.log(note_score);
+				if(i==0)console.log(x.combo,skill_mag,note_score,(total_score+note_score));
 				total_score+=note_score;
 			}
 			else if(x.type=="e")
 			{
 				skill_mag+=x.num;
 			}
+			
 		}
 		//console.log(total_score);
 		total_score_arr[i] = total_score;
