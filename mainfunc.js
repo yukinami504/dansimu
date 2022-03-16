@@ -134,43 +134,6 @@ function calcForce(flag)
 	
 	
 	//旧スコア計算方法
-	/*
-	
-	//a1,a2の計算
-	for(let x=0;x<3;x++){
-		a1+=(mitamas[0][x]+mitamas[1][x]+mitamas[2][x]+mitamas[3][x]+mitamas[4][x]);
-	}
-	a2 = a1 * (bloom_level/10000);
-	
-	
-	//cの計算
-	if(msc_attr==3){//All
-		for(let y=0;y<5;y++){
-			for(let x=0;x<3;x++){
-				c+=(mitamas[y][x]*(1+heroine[x]/100)*(1+hrs_bonus[y][x]/100));
-			}
-		}
-		c = c *(1+bloom_level/10000)
-		c = c *0.5;
-	}
-	else
-	{
-		for(let y=0;y<5;y++){
-			if(mtm_attr[y]==msc_attr){
-				c+=(mitamas[y][msc_attr]*(1+bloom_level/10000)*(1+heroine[msc_attr]/100)*(1+hrs_bonus[y][msc_attr]/100));
-			}
-			console.log(mitamas[y][msc_attr],bloom_level,heroine[msc_attr],hrs_bonus[y][msc_attr]);
-		}
-	}
-	//dの計算
-	for(let y=0;y<5;y++){
-		for(let x=0;x<3;x++){
-			d+=(mitamas[y][x]*(1+bloom_level/10000)*(1+heroine[x]/100)*(1+hrs_bonus[y][x]/100));
-		}
-	}
-	d = d -(a1*(1+bloom_level/10000))+1;
-	
-	*/
 	
 	console.log(a1,a2,b,c,d);
 	updateTable(a1,a2,b,c,d);
@@ -208,7 +171,10 @@ function calcScore()
 			let time_nume = musicdata.bar_change[change_index].measure.split('/')[0];
 			let time_deno = musicdata.bar_change[change_index].measure.split('/')[1];
 			bar_time_arr[i] = 240000*parseInt(time_nume)/parseInt(time_deno)/(musicdata.bar_change[change_index].BPM);
-			bar_start_time_arr[i] = ((i==0)?(0):(bar_start_time_arr[i-1]+bar_time_arr[i-1]));
+			bar_start_time_arr[i] = (
+				 (i==0)?(0)
+				:(musicdata.barstart_ms[i]!=undefined&&musicdata.barstart_ms[i]!=null&&musicdata.barstart_ms[i]!=-1)?(musicdata.barstart_ms[i])
+				:(bar_start_time_arr[i-1]+bar_time_arr[i-1]));
 		}
 		else {
 			let time_nume = musicdata.measure.split('/')[0];
@@ -229,7 +195,7 @@ function calcScore()
 		
 		if(musicdata.barstart_ms[notes[i].bar-1]!=undefined&&musicdata.barstart_ms[notes[i].bar-1]!=null&&musicdata.barstart_ms[notes[i].bar-1]!=-1)bar_start_time = ((musicdata.offset)+musicdata.barstart_ms[notes[i].bar-1]);//barstart_msがある場合はそちらが優先される
 		
-		//console.log(bar_start_time);
+		console.log(bar_start_time);
 		//console.log(musicdata.barstart_ms[notes[i].bar-1]);
 		
 		obj.type = "n";
@@ -470,7 +436,7 @@ function calcScore()
 				
 				note_score = Math.floor(note_score);//小数点以下切り捨て
 				note_score = Math.floor(note_score*((100+skill_mag)/100));
-				if(i==0)console.log(x.combo,skill_mag,note_score,(total_score+note_score));
+				//if(i==0)console.log(x.combo,skill_mag,note_score,(total_score+note_score));
 				total_score+=note_score;
 			}
 			else if(x.type=="e")

@@ -7097,6 +7097,63 @@ let mtmdata_2=[
     }
   },
   {
+    "id": 2117,
+    "name": "始まりと目覚めのシンフォニア",
+    "rare": "sr",
+    "character": "メルラン・プリズムリバー",
+    "attr": "ro",
+    "release_date": "2022/03/14",
+    "status": {
+      "max_st": [
+        2363,
+        2809,
+        5888
+      ],
+      "min_st": [
+        499,
+        646,
+        1663
+      ],
+      "burst1": {
+        "cat": "damage",
+        "num": [
+          5,
+          6,
+          7
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "invinc",
+        "num": [
+          [
+            8,
+            43,
+            4
+          ],
+          [
+            8,
+            53,
+            5.6
+          ],
+          [
+            8,
+            63,
+            7.2
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "time",
+        "num": [
+          12,
+          13,
+          14
+        ]
+      }
+    }
+  },
+  {
     "id": 0,
     "name": null,
     "rare": null,
