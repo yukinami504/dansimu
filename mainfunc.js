@@ -195,13 +195,13 @@ function calcScore()
 		
 		if(musicdata.barstart_ms[notes[i].bar-1]!=undefined&&musicdata.barstart_ms[notes[i].bar-1]!=null&&musicdata.barstart_ms[notes[i].bar-1]!=-1)bar_start_time = ((musicdata.offset)+musicdata.barstart_ms[notes[i].bar-1]);//barstart_msがある場合はそちらが優先される
 		
-		console.log(bar_start_time);
+		//console.log(bar_start_time);
 		//console.log(musicdata.barstart_ms[notes[i].bar-1]);
 		
 		obj.type = "n";
 		obj.combo = notes[i].id;
 		if(notes[i].flag==1)obj.time = (bar_start_time+notes[i].ms);
-		else obj.time = (bar_start_time+((notes[i].tick*bar_time)/1920));
+		else obj.time = (bar_start_time+((notes[i].tick*bar_time_arr[notes[i].bar-1])/1920));
 		notes_arr[i] = obj;
 	}
 	console.log(notes_arr)
