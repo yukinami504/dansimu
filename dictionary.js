@@ -146,4 +146,5 @@ const music_name = {
 	"さようなら。ありがとう。" : {"id" : "bye", "attr" : "co"},
 	"地の色は黄色" : {"id" : "yellow", "attr" : "all"},
 	"天使の腕試し" : {"id" : "angel", "attr" : "co"},
+	"ⓊPOKER FACE" : {"id" : "poker_u", "attr" : "co"},
 }
