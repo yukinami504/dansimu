@@ -17,6 +17,7 @@
   <script src="dictionary.js"></script>
   <script src="mtmdata.js"></script>
   <script src="mtmdata2.js"></script>
+  <script src="mtmdata3.js"></script>
   <script src="getdata.js"></script>
   <script src="mainfunc.js"></script>
   <script src="somefunc.js"></script>
@@ -45,7 +46,7 @@
 	<button type="button" onclick="getOtherData()">getOtherData()</button>
 	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
 	<div class="open-window" id="releasenote" onclick="obj=document.getElementById('rel_nt').style; obj.display=(obj.display=='none')?'block':'none';">
-	<a style="cursor:pointer;">▼ <b>お知らせ（2022.03.19更新）</b>（クリックで開閉）</a>
+	<a style="cursor:pointer;">▼ <b>お知らせ（2022.03.23更新）</b>（クリックで開閉）</a>
 	</div>
 	<div class="col-0" id="rel_nt" style="display:none;clear:both;">
 	<p class="info-title">■これは何？</p>
@@ -88,6 +89,8 @@
 	A.ミタマバーストがスコアアップ系だった場合、撃ったことによって増えるスコアの推定値を表示します。<br><br>
 	その他、ご意見・ご要望がありましたら<a href="https://twitter.com/yuki_nami403">@yuki_nami403</a>までご連絡ください。<br>
 	<p class="info-title">■更新履歴</p>
+	(2022.03.20) イベントミタマカードと、楽曲「妖々跋扈　～ Who done it!」を実装しました。<br>
+	(2022.03.20) Rミタマカードを追加しました。<br>
 	(2022.03.19) 新規ミタマカードと「POKER FACE」のUra Kaguraを実装しました。<br>
 	(2022.03.15) イベントミタマカードと、現在未実装の楽曲を実装しました。<br>
 	(2022.03.11) イベントミタマカードと楽曲「さようなら。ありがとう。」を実装しました。<br>
@@ -180,7 +183,8 @@
 	<ul><li>フィルタ設定</li>
 		<span class="col-1">レアリティ</span>
 		<span><label><input type="checkbox" name="fl_ssr" value="fl_ssr" checked>SSR</label></span>
-		<span><label><input type="checkbox" name="fl_sr" value="fl_sr" checked>SR</label></span><br>
+		<span><label><input type="checkbox" name="fl_sr" value="fl_sr" checked>SR</label></span>
+		<span><label><input type="checkbox" name="fl_r" value="fl_r" checked>R</label></span><br>
 		
 		<span class="col-1">属性</span>
 		<span><label><input type="checkbox" name="fl_em" value="fl_em" checked>Em</label></span>

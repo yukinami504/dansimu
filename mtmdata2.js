@@ -7229,27 +7229,129 @@ let mtmdata_2=[
     }
   },
   {
-    "id": 0,
-    "name": null,
-    "rare": null,
-    "character": null,
-    "attr": null,
-    "release_date": "2021/08/03",
+    "id": 2119,
+    "name": "猫は喜び春駆け回る",
+    "rare": "sr",
+    "character": "橙",
+    "attr": "ro",
+    "release_date": "2022/03/22",
     "status": {
       "max_st": [
-        0,
-        0,
-        0
+        2203,
+        3734,
+        5122
       ],
       "min_st": [
-        0,
-        0,
-        0
+        446,
+        952,
+        1410
       ],
-      "burst1": null,
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
       "burst2": null,
-      "effect": null,
-      "odekake": null
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            8,
+            43,
+            4,
+            17
+          ],
+          [
+            8,
+            53,
+            5.6,
+            18
+          ],
+          [
+            8,
+            63,
+            7.2,
+            20
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "drop",
+        "num": [
+          25,
+          27,
+          30
+        ]
+      }
+    }
+  },
+  {
+    "id": 2120,
+    "name": "ヒトリ、夜二溶ケル",
+    "rare": "sr",
+    "character": "八雲紫",
+    "attr": "ro",
+    "release_date": "2022/03/22",
+    "status": {
+      "max_st": [
+        2809,
+        2363,
+        5888
+      ],
+      "min_st": [
+        646,
+        499,
+        1663
+      ],
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          40,
+          45,
+          50
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "judge",
+        "num": [
+          [
+            7,
+            43,
+            3.5
+          ],
+          [
+            7,
+            53,
+            4.9
+          ],
+          [
+            7,
+            63,
+            6.3
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "force",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
     }
   }
 ];

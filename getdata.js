@@ -43,6 +43,7 @@ function getOtherData()
 function concatMtmData()
 {//最初にデータ統合
 	mtmdata = mtmdata.concat(mtmdata_2);
+	mtmdata = mtmdata.concat(mtmdata_3);
 }
 
 function getMtmData()

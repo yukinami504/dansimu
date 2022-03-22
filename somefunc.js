@@ -51,7 +51,7 @@ function date2int(date_txt){
 function calcStatus(st_max, st_min, rare, level, sn_lvl)
 {
 	const sn_status = [//4*10
-		[0,225,375,522,597,1410,1494,1542,1593,0],//n[0,225,150,147,75,813,84,48,51,0]
+		[0,225,375,522,597,1410,1494,1542,1593,1659],//n[0,225,150,147,75,813,84,48,51,66]
 		[0,498,831,1161,1326,1410,1494,1542,1593,1659],//r[0,498,333,330,165,84(85?),84,48,51,66]
 		[0,675,1275,1785,2040,2169,2295,2373,2448,2550],//sr[0,675,600,510,255,129,126,78,75,102]
 		[0,900,1500,2100,2400,2550,2700,2790,2880,3000],//ssr[0,900,600,600,300,150,150,90,90,120]
@@ -109,6 +109,7 @@ function mtmSort()
 		let flag = false;
 		if(document.dataForm.fl_ssr.checked && item.rare=="ssr")flag=true;
 		if(document.dataForm.fl_sr.checked && item.rare=="sr")flag=true;
+		if(document.dataForm.fl_r.checked && item.rare=="r")flag=true;
 		return flag;
 	}).filter(function(item){
 		let flag = false;

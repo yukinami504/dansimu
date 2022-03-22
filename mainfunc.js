@@ -232,7 +232,7 @@ function calcScore()
 	else m_b_level = 3;
 	
 	
-	if(m_b_info.cat=="score"){
+	if(m_b_info!=null&&m_b_info.cat=="score"){
 	
 		burst_time = m_b_info.num[m_b_level-1][0]*1000+550;//暫定
 		burst_num = m_b_info.num[m_b_level-1][1];
@@ -394,7 +394,7 @@ function calcScore()
 		
 		//ミタマバーストも入れる
 		
-		if(m_b_info.cat=="score"&&p!=0)
+		if(m_b_info!=null&&m_b_info.cat=="score"&&p!=0)
 		{
 			let m_b_num = m_b_info.num[m_b_level-1][1];
 			

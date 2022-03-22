@@ -68,6 +68,7 @@ const chara_name = {
 	"水橋パルスィ" : {"id" : 65, "name" : "パルスィ"},
 	"鍵山雛" : {"id" : 66, "name" : "雛"},
 	"リリーホワイト" : {"id" : 67, "name" : "リリー"},
+	"八雲藍" : {"id" : 68, "name" : "藍"},
 }
 
 const music_name = {
@@ -106,6 +107,7 @@ const music_name = {
 	"トランスダンスアナーキー" : {"id" : "trance", "attr" : "ro"},
 	"The Karasu Wind" : {"id" : "karasu", "attr" : "em"},
 	"drizzly rain" : {"id" : "drizz", "attr" : "ro"},
+	"SACRIFICE" : {"id" : "sacrif", "attr" : "co"},
 	"ウサテイ20XX" : {"id" : "usatei", "attr" : "ro"},
 	"Lotus Love" : {"id" : "lotus", "attr" : "em"},
 	"ソリッド" : {"id" : "solid", "attr" : "co"},
@@ -147,4 +149,5 @@ const music_name = {
 	"地の色は黄色" : {"id" : "yellow", "attr" : "all"},
 	"天使の腕試し" : {"id" : "angel", "attr" : "co"},
 	"ⓊPOKER FACE" : {"id" : "poker_u", "attr" : "co"},
+	"妖々跋扈　～ Who done it!" : {"id" : "whodun", "attr" : "ro"},
 }
