@@ -7482,5 +7482,80 @@ let mtmdata_2=[
         ]
       }
     }
+  },
+  {
+    "id": 2123,
+    "name": "SAMURAI GHOST GIRL, KILL! KILL!",
+    "rare": "sr",
+    "character": "魂魄妖夢",
+    "attr": "em",
+    "release_date": "2022/03/28",
+    "status": {
+      "max_st": [
+        5869,
+        1614,
+        1833
+      ],
+      "min_st": [
+        1656,
+        252,
+        324
+      ],
+      "burst1": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            40
+          ],
+          [
+            6,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ]
+      },
+      "burst2": null,
+      "effect": {
+        "cat": "score_ex",
+        "stage": [
+          "smrigg_u"
+        ],
+        "num": [
+          [
+            4,
+            47,
+            2,
+            15,
+            3
+          ],
+          [
+            4,
+            57,
+            2.9,
+            18,
+            7
+          ],
+          [
+            4,
+            67,
+            3.8,
+            20,
+            30
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "bell",
+        "num": [
+          50,
+          55,
+          60
+        ]
+      }
+    }
   }
 ];

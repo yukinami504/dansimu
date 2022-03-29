@@ -151,4 +151,5 @@ const music_name = {
 	"ⓊPOKER FACE" : {"id" : "poker_u", "attr" : "co"},
 	"妖々跋扈　～ Who done it!" : {"id" : "whodun", "attr" : "ro"},
 	"Ayakashi set 14 Another 〜 夜が降りてくる" : {"id" : "ayks14", "attr" : "co"},
+	"ⓊSAMURAI GHOST GIRL, KILL! KILL!" : {"id" : "smrigg_u", "attr" : "em"},
 }

@@ -184,6 +184,8 @@ function calcScore()
 		}
 		console.log(i,bar_time_arr[i],bar_start_time_arr[i]);
 	}
+	let auto_mb_start = +(musicdata.offset +bar_time_arr[bar_num-1]+bar_start_time_arr[bar_num-1])/2;
+	console.log("auto burst time:"+auto_mb_start);
 	
 	let notes_arr = new Array();
 	for(let i=0;i<notes_num;i++)
@@ -318,7 +320,7 @@ function calcScore()
 	//n回繰り返す
 	let total_score_arr = [];
 	let n = formElms.simunum.value;
-	let p = formElms.mb_pos.value;
+	let p = formElms.mb_pos.value-0;
 	for(let i=0;i<n;i++)
 	{
 		//まずスコアボーナスを生成する
@@ -397,12 +399,19 @@ function calcScore()
 		if(m_b_info!=null&&m_b_info.cat=="score"&&p!=0)
 		{
 			let m_b_num = m_b_info.num[m_b_level-1][1];
-			
-			let obj3 = {type:"e", num:m_b_num, time:(max_burst_time-1)};
+			let m_b_time = max_burst_time-1;
+			//console.log(p);
+			switch(p){
+				case 1: m_b_time = auto_mb_start; break;
+				case 4: m_b_time = max_burst_time-1; break;
+				default: m_b_time = 0; break;
+			}
+			if(i==0)console.log(p, m_b_time);
+			let obj3 = {type:"e", num:m_b_num, time:(m_b_time)};
 			scoreup_events_arr[s_e_arr_length] = obj3;
 			s_e_arr_length++;
 			
-			let obj4 = {type:"e", num:(-(m_b_num)), time:(max_burst_time-1+burst_time)};
+			let obj4 = {type:"e", num:(-(m_b_num)), time:(m_b_time+burst_time)};
 			scoreup_events_arr[s_e_arr_length] = obj4;
 			s_e_arr_length++;
 		}

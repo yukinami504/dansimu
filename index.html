@@ -46,7 +46,7 @@
 	<button type="button" onclick="getOtherData()">getOtherData()</button>
 	<button type="button" onclick="getScoreData()">getScoreData()</button>-->
 	<div class="open-window" id="releasenote" onclick="obj=document.getElementById('rel_nt').style; obj.display=(obj.display=='none')?'block':'none';">
-	<a style="cursor:pointer;">▼ <b>お知らせ（2022.03.23更新）</b>（クリックで開閉）</a>
+	<a style="cursor:pointer;">▼ <b>お知らせ（2022.03.30更新）</b>（クリックで開閉）</a>
 	</div>
 	<div class="col-0" id="rel_nt" style="display:none;clear:both;">
 	<p class="info-title">■これは何？</p>
@@ -89,6 +89,7 @@
 	A.ミタマバーストがスコアアップ系だった場合、撃ったことによって増えるスコアの推定値を表示します。<br><br>
 	その他、ご意見・ご要望がありましたら<a href="https://twitter.com/yuki_nami403">@yuki_nami403</a>までご連絡ください。<br>
 	<p class="info-title">■更新履歴</p>
+	(2022.03.30) 新規ミタマカードと「SAMURAI GHOST GIRL, KILL! KILL!」のUra Kaguraを実装しました。<br>
 	(2022.03.26) 新規ミタマカードと、楽曲「Ayakashi set 14 Another 〜 夜が降りてくる」を実装しました。<br>
 	(2022.03.23) イベントミタマカードと、楽曲「妖々跋扈　～ Who done it!」を実装しました。<br>
 	(2022.03.20) Rミタマカードを追加しました。<br>
@@ -98,7 +99,6 @@
 	(2022.03.08) 新規ミタマカードと「明星ロケット」のUra Kaguraを実装しました。<br>
 	(2022.03.05) 新規ミタマカードと楽曲「マリオネットメトロポリス」を実装しました。<br>
 	(2022.03.03) 既存の情報と独自検証をもとに、スコア計算法を修正しました。<br>
-	(2022.02.28) イベントミタマカードと楽曲「LOVE EAST」を実装しました。<br>
 	(2022.02.26) β版をリリースしました。<br>
 	(2021.11.28) α版をリリースしました。
 	<p class="info-title">■スペシャルサンクス</p>
@@ -263,6 +263,7 @@
 			</select><br>
 			ミタマバースト発動　 <select name="mb_pos" id="sm2">
 				<option value="0">なし</option>
+				<!--<option value="1">オート</option>-->
 				<option value="4" selected>最適</option>
 			</select>
 			<button type="button"  class="btn-big btn-a" onclick="calcScore()">推定スコア算出</button>

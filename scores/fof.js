@@ -7,6 +7,7 @@ var musicdata =
 	"measure" : "4/4",
 	"BPM" : 152,
 	"offset" : 1566, //楽曲開始時から1小節目までの時間(ms)
+	"bar_num": 73,//小節の数
 	"barstart_ms" : [null],//i小節目の開始時間(ms),offsetは別
 	"difficulty" : [6,12,17,20,25],
 	"notes" : [129,250,496,573,765]
