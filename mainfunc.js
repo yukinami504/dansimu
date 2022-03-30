@@ -210,6 +210,8 @@ function calcScore()
 	
 	//ついでにミタマバースト発動の最適タイミングも出す
 	
+	let p = formElms.mb_pos.value-0;
+	
 	let burst_time = 8000;
 	console.log(diff_num,force,notes_num);
 	let basic_score = (0.3342*diff_num+10.8058)*force/notes_num;
@@ -234,7 +236,7 @@ function calcScore()
 	else m_b_level = 3;
 	
 	
-	if(m_b_info!=null&&m_b_info.cat=="score"){
+	if(m_b_info!=null&&m_b_info.cat=="score"&&p==4){
 	
 		burst_time = m_b_info.num[m_b_level-1][0]*1000+550;//暫定
 		burst_num = m_b_info.num[m_b_level-1][1];
@@ -250,8 +252,9 @@ function calcScore()
 			while(j<notes_num&&notes_arr[j].time<end_time)
 			{
 				let note_score = basic_score;
-				if((1<=notes_arr[j].combo&&notes_arr[j].combo<=50)||(notes_arr[j].combo>=1501))note_score*=1.00;
+				if(1<=notes_arr[j].combo&&notes_arr[j].combo<=50)note_score*=1.00;
 				else if(51<=notes_arr[j].combo&&notes_arr[j].combo<=100)note_score*=1.01;
+				else if(notes_arr[j].combo>=1501)note_score*=1.15;
 				else note_score*=((100+(Math.floor((notes_arr[j].combo+99)/100)))/100);
 				
 				burst_score+=Math.floor(note_score);
@@ -267,10 +270,35 @@ function calcScore()
 		console.log((max_i+1)+"コンボ目に撃ったらいいよ！"+"(+"+(max_burst_score*(burst_num)/100)+")");
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+(max_i+1)+"コンボ目に撃ったらいいよ！"+"(+"+Math.floor(max_burst_score*(burst_num)/100)+")";
 	}
+	else if(m_b_info!=null&&m_b_info.cat=="score"&&p==1){
+		burst_time = m_b_info.num[m_b_level-1][0]*1000+550;//暫定
+		burst_num = m_b_info.num[m_b_level-1][1];
+		console.log("MB発動時間: "+burst_time);
+		console.log("MB発動効果: +"+burst_num+"%");
+		
+		let start_time = auto_mb_start;
+		let end_time = start_time + burst_time;
+		let auto_burst_score = 0;
+		let k=0;
+		while(notes_arr[k].time<start_time)k++;
+		let auto_m_b_combo = k;
+		while(k<notes_num&&notes_arr[k].time<end_time)
+		{
+			let note_score = basic_score;
+			if(1<=notes_arr[k].combo&&notes_arr[k].combo<=50)note_score*=1.00;
+			else if(51<=notes_arr[k].combo&&notes_arr[k].combo<=100)note_score*=1.01;
+			else if(notes_arr[k].combo>=1501)note_score*=1.15;
+			else note_score*=((100+(Math.floor((notes_arr[k].combo+99)/100)))/100);
+			
+			auto_burst_score+=Math.floor(note_score);
+			k++;
+		}
+		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+auto_m_b_combo+"コンボ目あたりに発動するよ！"+"(+"+Math.floor(auto_burst_score*(burst_num)/100)+")";
+	}
 	else {
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： ミタマバーストがスコアアップ系じゃないよ！";
 	}
-	if(formElms.mb_pos.value==4)visText("text1");
+	if(p==4||p==1)visText("text1");
 	else delText("text1");
 
 	
@@ -320,7 +348,6 @@ function calcScore()
 	//n回繰り返す
 	let total_score_arr = [];
 	let n = formElms.simunum.value;
-	let p = formElms.mb_pos.value-0;
 	for(let i=0;i<n;i++)
 	{
 		//まずスコアボーナスを生成する
@@ -439,8 +466,9 @@ function calcScore()
 				let note_score = basic_score;
 				//let note_score = basic_score*((100+skill_mag)/100);
 				
-				if((1<=x.combo&&x.combo<=50)||(x.combo>=1501))note_score*=1.00;
+				if(1<=x.combo&&x.combo<=50)note_score*=1.00;
 				else if(51<=x.combo&&x.combo<=100)note_score*=1.01;
+				else if(x.combo>=1501)note_score*=1.15;
 				else note_score*=((100+(Math.floor((x.combo+99)/100)))/100);
 				
 				note_score = Math.floor(note_score);//小数点以下切り捨て
