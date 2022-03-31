@@ -69,6 +69,7 @@ const chara_name = {
 	"鍵山雛" : {"id" : 66, "name" : "雛"},
 	"リリーホワイト" : {"id" : 67, "name" : "リリー"},
 	"八雲藍" : {"id" : 68, "name" : "藍"},
+	"稀神サグメ" : {"id" : 69, "name" : "サグメ"},
 }
 
 const music_name = {
@@ -152,4 +153,5 @@ const music_name = {
 	"妖々跋扈　～ Who done it!" : {"id" : "whodun", "attr" : "ro"},
 	"Ayakashi set 14 Another 〜 夜が降りてくる" : {"id" : "ayks14", "attr" : "co"},
 	"ⓊSAMURAI GHOST GIRL, KILL! KILL!" : {"id" : "smrigg_u", "attr" : "em"},
+	"Breaking the Silence" : {"id" : "break", "attr" : "em"},
 }

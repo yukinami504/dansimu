@@ -164,7 +164,7 @@ function calcScore()
 	
 	//まず各小節の時間のみ
 	let change_index=0;
-	let bar_num = notes[notes_num-1].bar;
+	let bar_num = (('bar_num' in musicdata)?(musicdata.bar_num):notes[notes_num-1].bar);
 	for(let i=0;i<bar_num;i++){
 		if('bar_change' in musicdata){
 			while(!(musicdata.bar_change[change_index].start<=(i+1)&&(i+1)<=musicdata.bar_change[change_index].end))change_index++;
