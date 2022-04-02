@@ -154,4 +154,5 @@ const music_name = {
 	"Ayakashi set 14 Another 〜 夜が降りてくる" : {"id" : "ayks14", "attr" : "co"},
 	"ⓊSAMURAI GHOST GIRL, KILL! KILL!" : {"id" : "smrigg_u", "attr" : "em"},
 	"Breaking the Silence" : {"id" : "break", "attr" : "em"},
+	"ボーダーオブライフ" : {"id" : "border", "attr" : "all"},
 }
