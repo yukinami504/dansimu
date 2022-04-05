@@ -155,4 +155,5 @@ const music_name = {
 	"ⓊSAMURAI GHOST GIRL, KILL! KILL!" : {"id" : "smrigg_u", "attr" : "em"},
 	"Breaking the Silence" : {"id" : "break", "attr" : "em"},
 	"ボーダーオブライフ" : {"id" : "border", "attr" : "all"},
+	"遥か遠く遥か彼方" : {"id" : "haruka", "attr" : "em"},
 }
