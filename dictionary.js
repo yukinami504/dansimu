@@ -70,6 +70,7 @@ const chara_name = {
 	"リリーホワイト" : {"id" : 67, "name" : "リリー"},
 	"八雲藍" : {"id" : 68, "name" : "藍"},
 	"稀神サグメ" : {"id" : 69, "name" : "サグメ"},
+	"菅牧典" : {"id" : 70, "name" : "典"},
 }
 
 const music_name = {
@@ -156,4 +157,7 @@ const music_name = {
 	"Breaking the Silence" : {"id" : "break", "attr" : "em"},
 	"ボーダーオブライフ" : {"id" : "border", "attr" : "all"},
 	"遥か遠く遥か彼方" : {"id" : "haruka", "attr" : "em"},
+	"ⓊSweets Time" : {"id" : "sweets_u", "attr" : "ro"},
+	"フォックスバレット" : {"id" : "fox", "attr" : "ro"},
+	"芥川龍之介の河童" : {"id" : "kappa", "attr" : "ro"},
 }
