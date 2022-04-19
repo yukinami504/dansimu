@@ -89,14 +89,14 @@ function getMtmData()
 		
 		let slc_l = document.getElementById("l"+i);
 		while(slc_l.length!=0)slc_l.remove(0);
-		let lv_arr = [1,2,20,30,40,60,80,100];
+		let lv_arr = [1,2,20,30,40,60,80,100,101];
 		for(let l=0;l<lv_arr.length;l++)
 		{
 			//selectboxに追加
 			let opt_l = document.createElement("option");
-			opt_l.text = lv_arr[l]+"";
+			opt_l.text = ((lv_arr[l]==101)?("BR開放"):(lv_arr[l]+""));
 			opt_l.value = lv_arr[l];
-			if(l==lv_arr.length-1)opt_l.selected = true;
+			if(l==lv_arr.length-2)opt_l.selected = true;
 			slc_l.appendChild(opt_l);
 		}
 	}

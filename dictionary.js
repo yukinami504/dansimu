@@ -71,6 +71,7 @@ const chara_name = {
 	"八雲藍" : {"id" : 68, "name" : "藍"},
 	"稀神サグメ" : {"id" : 69, "name" : "サグメ"},
 	"菅牧典" : {"id" : 70, "name" : "典"},
+	"八坂神奈子" : {"id" : 71, "name" : "神奈子"},
 }
 
 const music_name = {

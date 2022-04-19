@@ -43,13 +43,14 @@ function date2int(date_txt){
 	let ret = 0;
 	let date = date_txt.split("/");
 	ret = parseInt(date[0])*10000+parseInt(date[1])*100+parseInt(date[2]);
-	console.log(date_txt);
-	console.log(ret);
+	//console.log(date_txt);
+	//console.log(ret);
 	return ret;
 }
 
 function calcStatus(st_max, st_min, rare, level, sn_lvl)
 {
+	if(level>100)level=100;
 	const sn_status = [//4*10
 		[0,225,375,522,597,1410,1494,1542,1593,1659],//n[0,225,150,147,75,813,84,48,51,66]
 		[0,498,831,1161,1326,1410,1494,1542,1593,1659],//r[0,498,333,330,165,84(85?),84,48,51,66]

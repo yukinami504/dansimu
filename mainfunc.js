@@ -182,7 +182,7 @@ function calcScore()
 			bar_time_arr[i] = 240000*parseInt(time_nume)/parseInt(time_deno)/(musicdata.BPM);
 			bar_start_time_arr[i] = ((i==0)?(0):(bar_start_time_arr[i-1]+bar_time_arr[i-1]));
 		}
-		console.log(i,bar_time_arr[i],bar_start_time_arr[i]);
+		//console.log(i,bar_time_arr[i],bar_start_time_arr[i]);
 	}
 	let auto_mb_start = +(musicdata.offset +bar_time_arr[bar_num-1]+bar_start_time_arr[bar_num-1])/2;
 	console.log("auto burst time:"+auto_mb_start);
@@ -231,15 +231,45 @@ function calcScore()
 	let leader_sinka_level = parseInt(formElms["sinka1"].value);
 	let m_b_level;
 	
+	//for v1.4
+	let mitama_members_formb = new Array(5);
+	let mitama_b_lvl = new Array(5);
+	let mitama_lvl = new Array(5);
+	let isScoreUp = (m_b_info!=null && m_b_info.cat=="score");
+	
+	for(let y=0;y<5;y++)
+	{
+		let member_name = "mitama"+(y+1);
+		let member_sinka = "sinka"+(y+1);
+		let member_level = "level"+(y+1);
+		//mitama_members[y] = mtmdata[formElms[member_name].value];
+		mitama_members_formb[y] = mtmdata.find((v) => v.id == formElms[member_name].value);
+		let mem_s = parseInt(formElms[member_sinka].value);
+		mitama_lvl[y] = parseInt(formElms[member_level].value);
+		if(mitama_lvl[y]>100&&mitama_members_formb[y]["rare"]=="ssr"&&mitama_members_formb[y]["status"]["rink"]["cat"]=="score")isScoreUp=true;
+		
+		if(mem_s<4)mitama_b_lvl[y] = 1;
+		else if(mem_s<8)mitama_b_lvl[y] = 2;
+		else mitama_b_lvl[y] = 3;
+	}
+	
+	
 	if(leader_sinka_level<4)m_b_level = 1;
 	else if(leader_sinka_level<8)m_b_level = 2;
 	else m_b_level = 3;
 	
 	
-	if(m_b_info!=null&&m_b_info.cat=="score"&&p==4){
+	if(m_b_info!=null&&isScoreUp&&p==4){//p==4は今後外す？p!=0に？
 	
-		burst_time = m_b_info.num[m_b_level-1][0]*1000+550;//暫定
-		burst_num = m_b_info.num[m_b_level-1][1];
+		//burst_time = m_b_info.num[m_b_level-1][0]*1000+110;//暫定
+		burst_time = (2*(m_b_level-1)+4)*1000+110;//暫定
+		burst_num = ((m_b_info.cat=="score")?(m_b_info.num[m_b_level-1][1]):(0));
+		for(let y=0;y<5;y++){
+			if(mitama_lvl[y]>100&&mitama_members_formb[y]["rare"]=="ssr"){
+				console.log(mitama_members_formb[y]);
+				burst_num+=mitama_members_formb[y]["status"]["rink"]["num"][mitama_b_lvl[y]-1]//リンク開放済み
+			}
+		}
 		console.log("MB発動時間: "+burst_time);
 		console.log("MB発動効果: +"+burst_num+"%");
 		
@@ -271,7 +301,7 @@ function calcScore()
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+(max_i+1)+"コンボ目に撃ったらいいよ！"+"(+"+Math.floor(max_burst_score*(burst_num)/100)+")";
 	}
 	else if(m_b_info!=null&&m_b_info.cat=="score"&&p==1){
-		burst_time = m_b_info.num[m_b_level-1][0]*1000+550;//暫定
+		burst_time = m_b_info.num[m_b_level-1][0]*1000+110;//暫定
 		burst_num = m_b_info.num[m_b_level-1][1];
 		console.log("MB発動時間: "+burst_time);
 		console.log("MB発動効果: +"+burst_num+"%");
