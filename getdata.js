@@ -94,7 +94,7 @@ function getMtmData()
 		{
 			//selectboxに追加
 			let opt_l = document.createElement("option");
-			opt_l.text = ((lv_arr[l]==101)?("BR開放"):(lv_arr[l]+""));
+			opt_l.text = ((lv_arr[l]==101)?("BL開放"):(lv_arr[l]+""));
 			opt_l.value = lv_arr[l];
 			if(l==lv_arr.length-2)opt_l.selected = true;
 			slc_l.appendChild(opt_l);
