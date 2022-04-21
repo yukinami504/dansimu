@@ -6063,27 +6063,87 @@ let mtmdata=[
     }
   },
   {
-    "id": 0,
-    "name": null,
-    "rare": null,
-    "character": null,
-    "attr": null,
-    "release_date": "2021/08/03",
+    "id": 1076,
+    "name": "『守矢大戦　諏訪子VS神奈子』",
+    "rare": "ssr",
+    "character": "八坂神奈子",
+    "attr": "co",
+    "release_date": "2022/04/20",
     "status": {
       "max_st": [
-        0,
-        0,
-        0
+        4483,
+        6122,
+        2684
       ],
       "min_st": [
-        0,
-        0,
-        0
+        1045,
+        1537,
+        505
       ],
-      "burst1": null,
-      "burst2": null,
-      "effect": null,
-      "odekake": null
+      "burst1": {
+        "cat": "heal",
+        "num": [
+          60,
+          65,
+          70
+        ]
+      },
+      "burst2": {
+        "cat": "score",
+        "num": [
+          [
+            4,
+            60
+          ],
+          [
+            6,
+            65
+          ],
+          [
+            8,
+            70
+          ]
+        ]
+      },
+      "effect": {
+        "cat": "score",
+        "num": [
+          [
+            5,
+            41,
+            2.5,
+            22
+          ],
+          [
+            5,
+            51,
+            3.5,
+            23
+          ],
+          [
+            5,
+            61,
+            4.5,
+            25
+          ]
+        ]
+      },
+      "odekake": {
+        "cat": "bell",
+        "num": [
+          70,
+          75,
+          80
+        ]
+      },
+	  "rink": {
+        "cat": "heal",
+        "num": [
+          20,
+          22,
+          25
+        ]
+      }
     }
   }
 ];
