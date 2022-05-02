@@ -72,6 +72,7 @@ const chara_name = {
 	"稀神サグメ" : {"id" : 69, "name" : "サグメ"},
 	"菅牧典" : {"id" : 70, "name" : "典"},
 	"八坂神奈子" : {"id" : 71, "name" : "神奈子"},
+	"霊烏路空" : {"id" : 72, "name" : "お空"},
 }
 
 const music_name = {
@@ -161,4 +162,5 @@ const music_name = {
 	"ⓊSweets Time" : {"id" : "sweets_u", "attr" : "ro"},
 	"フォックスバレット" : {"id" : "fox", "attr" : "ro"},
 	"芥川龍之介の河童" : {"id" : "kappa", "attr" : "ro"},
+	"Hell's Sun" : {"id" : "hells", "attr" : "ro"},
 }
