@@ -213,6 +213,7 @@ function calcScore()
 	let p = formElms.mb_pos.value-0;
 	
 	let burst_time = 8000;
+	let burst_num = 0;
 	console.log(diff_num,force,notes_num);
 	let basic_score = (0.3342*diff_num+10.8058)*force/notes_num;
 	//let basic_score_f = (0.334*diff_num+10.807)*force/notes_num;
@@ -300,7 +301,7 @@ function calcScore()
 		console.log((max_i+1)+"コンボ目に撃ったらいいよ！"+"(+"+(max_burst_score*(burst_num)/100)+")");
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+(max_i+1)+"コンボ目に撃ったらいいよ！"+"(+"+Math.floor(max_burst_score*(burst_num)/100)+")";
 	}
-	else if(m_b_info!=null&&m_b_info.cat=="score"&&p==1){
+	else if(m_b_info!=null&&m_b_info.cat=="score"&&p==1){//分けている理由は暫定スコアの計算による
 		burst_time = m_b_info.num[m_b_level-1][0]*1000+110;//暫定
 		burst_num = m_b_info.num[m_b_level-1][1];
 		console.log("MB発動時間: "+burst_time);
@@ -455,7 +456,7 @@ function calcScore()
 		
 		if(m_b_info!=null&&m_b_info.cat=="score"&&p!=0)
 		{
-			let m_b_num = m_b_info.num[m_b_level-1][1];
+			let m_b_num = burst_num;//m_b_info.num[m_b_level-1][1];
 			let m_b_time = max_burst_time-1;
 			//console.log(p);
 			switch(p){
