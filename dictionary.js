@@ -166,4 +166,5 @@ const music_name = {
 	"芥川龍之介の河童" : {"id" : "kappa", "attr" : "ro"},
 	"Hell's Sun" : {"id" : "hells", "attr" : "ro"},
 	"Night's Dream (D.M.K. edit)" : {"id" : "nights", "attr" : "co"},
+	"supernatural" : {"id" : "supern", "attr" : "co"},
 }

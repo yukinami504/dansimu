@@ -161,6 +161,7 @@ function calcScore()
 	let bar_time = 240000/(musicdata.BPM);
 	let bar_time_arr = new Array();
 	let bar_start_time_arr = new Array();//bar_time_arrの累積
+	let tick_arr = new Array();
 	
 	//まず各小節の時間のみ
 	let change_index=0;
@@ -175,14 +176,16 @@ function calcScore()
 				 (i==0)?(0)
 				:(musicdata.barstart_ms[i]!=undefined&&musicdata.barstart_ms[i]!=null&&musicdata.barstart_ms[i]!=-1)?(musicdata.barstart_ms[i])
 				:(bar_start_time_arr[i-1]+bar_time_arr[i-1]));
+			tick_arr[i] = 1920*parseInt(time_nume)/parseInt(time_deno);
 		}
 		else {
 			let time_nume = musicdata.measure.split('/')[0];
 			let time_deno = musicdata.measure.split('/')[1];
 			bar_time_arr[i] = 240000*parseInt(time_nume)/parseInt(time_deno)/(musicdata.BPM);
 			bar_start_time_arr[i] = ((i==0)?(0):(bar_start_time_arr[i-1]+bar_time_arr[i-1]));
+			tick_arr[i] = 1920*parseInt(time_nume)/parseInt(time_deno);
 		}
-		//console.log(i,bar_time_arr[i],bar_start_time_arr[i]);
+		console.log(i,bar_time_arr[i],bar_start_time_arr[i],tick_arr[i]);
 	}
 	let auto_mb_start = +(musicdata.offset +bar_time_arr[bar_num-1]+bar_start_time_arr[bar_num-1])/2;
 	console.log("auto burst time:"+auto_mb_start);
@@ -202,8 +205,9 @@ function calcScore()
 		
 		obj.type = "n";
 		obj.combo = notes[i].id;
+		//let coeff = bar_time_arr[notes[i].bar-1]/(240000/());
 		if(notes[i].flag==1)obj.time = (bar_start_time+notes[i].ms);
-		else obj.time = (bar_start_time+((notes[i].tick*bar_time_arr[notes[i].bar-1])/1920));
+		else obj.time = (bar_start_time+((notes[i].tick*bar_time_arr[notes[i].bar-1])/tick_arr[notes[i].bar-1]));
 		notes_arr[i] = obj;
 	}
 	console.log(notes_arr)
@@ -262,8 +266,8 @@ function calcScore()
 	
 	if(m_b_info!=null&&isScoreUp&&p==4){//p==4は今後外す？p!=0に？
 	
-		//burst_time = m_b_info.num[m_b_level-1][0]*1000+110;//暫定
-		burst_time = (2*(m_b_level-1)+4)*1000+110;//暫定
+		//burst_time = m_b_info.num[m_b_level-1][0]*1000+60;//暫定
+		burst_time = (2*(m_b_level-1)+4)*1000+60;//暫定
 		burst_num = ((m_b_info.cat=="score")?(m_b_info.num[m_b_level-1][1]):(0));
 		for(let y=0;y<5;y++){
 			if(mitama_lvl[y]>100&&mitama_members_formb[y]["rare"]=="ssr"){
@@ -302,7 +306,7 @@ function calcScore()
 		document.getElementById("text1").innerText = "ミタマバースト発動タイミング ： "+(max_i+1)+"コンボ目に撃ったらいいよ！"+"(+"+Math.floor(max_burst_score*(burst_num)/100)+")";
 	}
 	else if(m_b_info!=null&&m_b_info.cat=="score"&&p==1){//分けている理由は暫定スコアの計算による
-		burst_time = m_b_info.num[m_b_level-1][0]*1000+110;//暫定
+		burst_time = m_b_info.num[m_b_level-1][0]*1000+60;//暫定
 		burst_num = m_b_info.num[m_b_level-1][1];
 		console.log("MB発動時間: "+burst_time);
 		console.log("MB発動効果: +"+burst_num+"%");
