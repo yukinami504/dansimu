@@ -170,4 +170,5 @@ const music_name = {
 	"Hell's Sun" : {"id" : "hells", "attr" : "ro"},
 	"Night's Dream (D.M.K. edit)" : {"id" : "nights", "attr" : "co"},
 	"supernatural" : {"id" : "supern", "attr" : "co"},
+	"カリスマ煉獄天神" : {"id" : "crsmr", "attr" : "em"},
 }
