@@ -78,6 +78,7 @@ const chara_name = {
 	"九十九弁々" : {"id" : 75, "name" : "弁々"},
 	"九十九八橋" : {"id" : 76, "name" : "八橋"},
 	"吉弔八千慧" : {"id" : 77, "name" : "八千慧"},
+	"驪駒早鬼" : {"id" : 78, "name" : "早鬼"},
 }
 
 const music_name = {
@@ -171,4 +172,5 @@ const music_name = {
 	"Night's Dream (D.M.K. edit)" : {"id" : "nights", "attr" : "co"},
 	"supernatural" : {"id" : "supern", "attr" : "co"},
 	"カリスマ煉獄天神" : {"id" : "crsmr", "attr" : "em"},
+	"GAME OVER (In Disarray)" : {"id" : "gover", "attr" : "ro"},
 }
