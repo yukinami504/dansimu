@@ -449,7 +449,7 @@ function calcScore()
 						let en = 0;
 						if(time_ms<cb_time){
 							if(e_num==31)en=17;
-							if(e_num==35)en=18;
+							if(e_num==34)en=18;
 							if(e_num==40)en=20;
 						}
 						else en = e_num;
