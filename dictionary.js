@@ -79,6 +79,7 @@ const chara_name = {
 	"九十九八橋" : {"id" : 76, "name" : "八橋"},
 	"吉弔八千慧" : {"id" : 77, "name" : "八千慧"},
 	"驪駒早鬼" : {"id" : 78, "name" : "早鬼"},
+	"永江衣玖" : {"id" : 79, "name" : "衣玖"},
 }
 
 const music_name = {

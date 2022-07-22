@@ -380,6 +380,7 @@ function calcScore()
 	console.log("Ro属性のみ編成",if_onlyro);
 	
 	let last_time = notes_arr[notes_num-1].time;
+	let cb_time = notes_arr[99].time;//100コンボない曲は条件分岐
 	//n回繰り返す
 	let total_score_arr = [];
 	let n = formElms.simunum.value;
@@ -415,6 +416,10 @@ function calcScore()
 				else if(mitama_members[j].status.effect.cat=="score_all"){
 					if(if_allattr)e_num+=mtm_eff[4];
 				}
+				
+				if(mitama_members[j].status.effect.cat=="score_cb"){
+					e_num+=mtm_eff[4];
+				}
 				//c_time,prob,e_time,e_num
 				
 				//属性一致の際は確率が1.5倍？説
@@ -438,15 +443,23 @@ function calcScore()
 				
 				let time_ms = c_time;
 				while(time_ms<=last_time+1000)
-				{
+				{	
 					if(random_judge(e_prob))
 					{
-						let obj1 = {type:"e", num:e_num, time:time_ms};
+						let en = 0;
+						if(time_ms<cb_time){
+							if(e_num==31)en=17;
+							if(e_num==35)en=18;
+							if(e_num==40)en=20;
+						}
+						else en = e_num;
+						
+						let obj1 = {type:"e", num:en, time:time_ms};
 						scoreup_events_arr[s_e_arr_length] = obj1;
 						s_e_arr_length++;
 						time_ms+=e_time;
 						
-						let obj2 = {type:"e", num:(-(e_num)), time:time_ms};
+						let obj2 = {type:"e", num:(-(en)), time:time_ms};
 						scoreup_events_arr[s_e_arr_length] = obj2;
 						s_e_arr_length++;
 					}
@@ -494,11 +507,13 @@ function calcScore()
 		//スコア計算
 		let total_score = 0;
 		let skill_mag = 0;
+		let now_combo = 0;
 		for(let x of events_arr)
 		{
 			if(x.type=="n")
 			{
 				let note_score = basic_score;
+				let now_combo = x.combo;
 				//let note_score = basic_score*((100+skill_mag)/100);
 				
 				if(1<=x.combo&&x.combo<=50)note_score*=1.00;
