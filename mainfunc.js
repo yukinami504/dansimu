@@ -448,6 +448,9 @@ function calcScore()
 					{
 						let en = 0;
 						if(time_ms<cb_time){
+							if(e_num==20)en=12;
+							if(e_num==23)en=13;
+							if(e_num==30)en=15;
 							if(e_num==31)en=17;
 							if(e_num==34)en=18;
 							if(e_num==40)en=20;
